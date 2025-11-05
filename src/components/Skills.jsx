@@ -1,32 +1,29 @@
 import React from 'react'
+import skillsData from '../assets/data/skills.json'
 
 const Skills = () => {
-  const skills = [
-    {
-      category: 'Frontend',
-      icon: '💻',
-      items: ['HTML/CSS', 'JavaScript', 'React', 'Vue.js', 'Tailwind CSS'],
-      color: 'from-blue-500 to-cyan-500',
-    },
-    {
-      category: 'Backend',
-      icon: '⚙️',
-      items: ['Node.js', 'Python', 'Express', 'Django', 'REST API'],
-      color: 'from-purple-500 to-pink-500',
-    },
-    {
-      category: 'Database',
-      icon: '🗄️',
-      items: ['MySQL', 'PostgreSQL', 'MongoDB', 'Redis'],
-      color: 'from-green-500 to-emerald-500',
-    },
-    {
-      category: 'Tools',
-      icon: '🛠️',
-      items: ['Git', 'Docker', 'VS Code', 'Figma', 'Postman'],
-      color: 'from-orange-500 to-red-500',
-    },
-  ]
+  const categoryIcons = {
+    'Frontend': '💻',
+    'Backend': '⚙️',
+    'Database': '🗄️',
+    'Tools': '🛠️',
+    'Tools & Others': '🛠️',
+  }
+
+  const categoryColors = {
+    'Frontend': 'from-blue-500 to-cyan-500',
+    'Backend': 'from-purple-500 to-pink-500',
+    'Database': 'from-green-500 to-emerald-500',
+    'Tools': 'from-orange-500 to-red-500',
+    'Tools & Others': 'from-orange-500 to-red-500',
+  }
+
+  const skills = skillsData.categories.map(category => ({
+    category: category.name,
+    icon: categoryIcons[category.name] || '📌',
+    items: category.skills.map(skill => skill.name),
+    color: categoryColors[category.name] || 'from-gray-500 to-gray-700',
+  }))
 
   return (
     <section id="skills" className="py-20 bg-gray-50">
