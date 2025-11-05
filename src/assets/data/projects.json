@@ -3,11 +3,34 @@
     "id": "chit",
     "title": "CHIT",
     "tagline": "스트리머와 시청자를 매끄럽게 연결하는 실시간 참여 플랫폼",
-    "period": "2025.01 ~ 2025.05",
+    "period": "2025.01 ~ 현재 (배포 준비 중)",
     "teamSize": "3명 (PM 1 / BE 1 / FE 1)",
-    "role": ["API 서버 개발", "배포", "UI 디자인"],
+    "role": [
+      "서비스 아키텍처 설계",
+      "API 서버 개발",
+      "실시간 참여 관리 로직 구현",
+      "SSE 기반 이벤트 시스템 구축",
+      "성능 최적화 및 인프라 구성",
+      "배포",
+      "UI 디자인"
+    ],
     "description": "치지직 스트리머용 시청자 관리 서드파티 서비스",
     "longDescription": "치지직 스트리머들이 시청자 참여 방송을 진행할 때, 시청자 인원을 실시간으로 수용하고 방송 컨텐츠에 맞게 유연하게 조절하여 효율적으로 관리할 수 있도록 돕는 스트리밍 서드파티 서비스입니다.",
+    "background": {
+      "purpose": "치지직 플랫폼의 스트리머들이 시청자 참여형 방송을 보다 효율적으로 운영할 수 있도록, 참여자 관리 기능이 포함된 실시간 시청자 참여 솔루션 제공",
+      "problem": "기존에는 게임방 코드를 방송을 통해 공개하고 시청자들이 무작위로 입장하는 구조였기 때문에, 누가 들어오는지 알 수 없고 참여 순서나 상태를 관리할 수 없는 문제 존재"
+    },
+    "persona": {
+      "target": "치지직 기반 소규모~중형 스트리머",
+      "painPoint": "참여형 콘텐츠를 자주 운영하지만 시청자 관리에 어려움을 겪음",
+      "needs": "방송 흐름을 해치지 않으면서도 참여자 대기열, 입장/퇴장 관리, 상태 변경 등을 실시간으로 효율적으로 제어"
+    },
+    "uniquePoints": [
+      "스트리머가 직접 세션을 생성하고 참여자를 초대/제어하는 구조로, 기존 코드 공유 방식의 수동성 제거",
+      "실시간으로 참여자 상태 확인 및 입장/대기/퇴장/강퇴 등의 세밀한 제어 가능",
+      "별도의 앱이나 복잡한 가입 없이, 방송 중 링크 공유만으로 참여 가능한 낮은 진입장벽",
+      "SSE 기반으로 구현된 가벼운 단방향 실시간 이벤트 처리 구조로 WebSocket의 복잡성 제거"
+    ],
     "highlights": [
       {
         "title": "실시간 데이터 처리 전략",
@@ -26,8 +49,8 @@
         "description": "Cloudflare를 통해 API 서버 보호. Nginx를 이용한 HTTPS 기반 리버스 프록시로 웹 애플리케이션 보안 강화"
       }
     ],
-    "summary": "최소 인원(3명)으로 진행된 토이 프로젝트로, 백엔드는 스프링 프레임워크만으로 구현하여 외부 의존성을 최소화하였습니다. OCI Free Tier의 제한된 자원에서도 효율적으로 작동하도록 Virtual Thread, EhCache, Hibernate 2차 캐시를 활용하여 성능을 최적화했으며, Cloudflare와 Nginx HTTPS를 통해 보안을 강화했습니다.",
-    "image": "/src/assets/images/projects/chit.webp",
+    "summary": "최소 인원(3명)으로 진행된 토이 프로젝트로, 스트리머가 직접 참여 세션을 개설하고 실시간으로 시청자 참여를 받고 관리할 수 있는 시스템입니다. 백엔드는 스프링 프레임워크만으로 구현하여 외부 의존성을 최소화하였고, OCI Free Tier의 제한된 자원에서도 효율적으로 작동하도록 Virtual Thread, EhCache, Hibernate 2차 캐시를 활용하여 성능을 최적화했으며, Cloudflare와 Nginx HTTPS를 통해 보안을 강화했습니다.",
+    "image": "/src/assets/images/projects/chit/logo.webp",
     "tags": ["Spring Boot", "SSE", "Virtual Thread", "EhCache", "Hibernate", "Cloudflare", "Nginx", "HTTPS"],
     "github": null,
     "demo": null,
@@ -40,7 +63,7 @@
     "period": "2024.04 ~ 2024.05",
     "description": "스마트 팩토리 물류 기기 통합 제어 및 모니터링 시스템",
     "longDescription": "스마트 팩토리 내 물류 기기의 실시간 상태와 이동 데이터를 원격으로 통합 제어 및 모니터링하며, 수집된 데이터를 데이터베이스에 저장해 분석하는 시스템입니다.",
-    "image": "/src/assets/images/projects/smartoring.webp",
+    "image": "/src/assets/images/projects/smartoring/logo.webp",
     "tags": [],
     "github": null,
     "demo": null,
@@ -54,7 +77,7 @@
     "period": "2024.02 ~ 2024.03",
     "description": "사용자 잔돈 자동 기부 핀테크 서비스",
     "longDescription": "사용자의 잔돈을 간편결제로 자동 기부하여, 직접 금전 기부의 부담을 줄이고 투명한 크라우드 펀딩 참여를 가능하게 하는 핀테크 서비스입니다.",
-    "image": "/src/assets/images/projects/ieumpay.webp",
+    "image": "/src/assets/images/projects/ieumpay/logo.webp",
     "tags": [],
     "github": null,
     "demo": null,
@@ -68,7 +91,7 @@
     "period": "2024.01 ~ 2024.02",
     "description": "다양한 콘텐츠 출판 가능한 SNS 플랫폼",
     "longDescription": "사용자가 앨범, 웹 소설, 레시피북 등 다양한 콘텐츠를 직접 출판할 수 있는 SNS 플랫폼으로, 디지털 환경 속에서 아날로그 감성을 경험할 수 있도록 지원합니다.",
-    "image": "/src/assets/images/projects/mybrary.webp",
+    "image": "/src/assets/images/projects/mybrary/logo.webp",
     "tags": [],
     "github": null,
     "demo": null,
