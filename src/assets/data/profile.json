@@ -1,18 +1,98 @@
 {
-  "name": "thingk0",
-  "title": "Developer",
-  "email": "your.email@example.com",
+  "name": "고명성",
+  "nickname": "thingk0",
+  "title": "AI Agent Engineer",
+  "email": "audtjd9080@naver.com",
   "github": "https://github.com/thingk0",
-  "linkedin": "",
-  "bio": "웹 개발과 문제 해결을 좋아하며, 사용자 경험을 최우선으로 생각합니다",
-  "greeting": "안녕하세요 👋",
-  "heroTitle": "개발자",
-  "heroDescription": "웹 개발과 문제 해결을 좋아하며, 사용자 경험을 최우선으로 생각합니다",
-  "profileImage": "",
-  "resume": "",
+  "linkedin": "https://linkedin.com/in/thingk0",
+  "profileImage": "/src/assets/photo/my_portrait_01.webp",
+  "resume": "/resume.pdf",
+  "bio": {
+    "intro": "저는 도전·노력·기회·성장을 가치로 삼는 개발자입니다.",
+    "values": [
+      {
+        "keyword": "도전",
+        "description": "저는 새로운 분야와 프로젝트에 적극적으로 뛰어드는 것을 두려워하지 않습니다. 대학생 멘토링부터 SSAFY, 그리고 다양한 토이 프로젝트까지, 도전은 제게 또 다른 배움의 기회이자 인생의 원동력이 되어 왔습니다. 도전의 장르는 한정되어 있지 않으며, 이를 통해 끊임없이 시야를 넓히고 역량을 확장하고자 합니다."
+      },
+      {
+        "keyword": "노력",
+        "description": "단기적인 성공에 만족하지 않고, 한 단계 더 높은 목표를 향해 끊임없이 정진하는 자세를 유지합니다. 예컨대 하나의 언어나 프레임워크 같은 기술 스택에서 한 가지 기능을 구현하는 데 그치지 않고, 최적화와 확장 가능성까지 고민합니다. 작은 성과에 안주하지 않는 꾸준한 노력이 제 성장의 핵심 동력이라고 믿습니다."
+      },
+      {
+        "keyword": "기회",
+        "description": "실패는 두려움의 대상이 아니라, 새로운 시도를 위한 토양이라 생각합니다. 프로젝트 중 발생하는 문제들은 저에게 오히려 배움의 기회가 되며, 이를 통해 이전에 시도해보지 않았던 방법론이나 기술을 도입해볼 수 있었습니다. 어려움이 닥칠 때마다 이를 성장의 발판으로 삼고자 노력합니다."
+      },
+      {
+        "keyword": "성장",
+        "description": "성장의 과정 자체에서 즐거움을 찾습니다. 작은 발전이라도 팀원들과 함께 기뻐하고, 이를 발판 삼아 다음 단계로 나아가려 합니다. 개인의 성장은 결국 팀 전체의 성장으로 이어지며, 이를 통해 더 나은 가치를 창출할 수 있다고 믿습니다. 앞으로도 성장의 기회를 마주할 때마다 호기심과 열정으로 도전하며, 끊임없이 발전하는 개발자가 되겠습니다."
+      }
+    ]
+  },
+  "career": [
+    {
+      "company": "빅스데이터",
+      "department": "기술개발본부",
+      "period": "2024.07 ~ 현재",
+      "positions": [
+        {
+          "title": "백엔드 엔지니어",
+          "period": "2024.07 ~ 2025.07"
+        },
+        {
+          "title": "AI Agent 엔지니어",
+          "period": "2025.07 ~ 현재"
+        }
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "date": "2024.05",
+      "event": "SSAFY 기업연계 프로젝트",
+      "project": "스마트 팩토리 플랫폼 '스마토링(Smartoring)'",
+      "award": "우수"
+    },
+    {
+      "date": "2024.03",
+      "event": "SSAFY 도메인 특화 프로젝트",
+      "project": "사회공헌 핀테크 플랫폼 '이음페이(IEUM-Pay)'",
+      "award": "최우수"
+    },
+    {
+      "date": "2024.02",
+      "event": "SSAFY 자기주도 공통 프로젝트",
+      "project": "SNS 기반 콘텐츠 공유 플랫폼 '마이브러리(MyBrary)'",
+      "award": "최우수"
+    }
+  ],
+  "education": [
+    {
+      "type": "부트캠프",
+      "institution": "삼성 청년 소프트웨어 아카데미 (SSAFY 10th)",
+      "period": "2023.07 ~ 2024.06",
+      "duration": "1년",
+      "description": "삼성전자에서 주관하는 청년 소프트웨어 인재 양성 교육 과정으로 프로젝트를 중심으로 학습 및 실습을 진행했습니다."
+    },
+    {
+      "type": "학사",
+      "institution": "명지대학교",
+      "major": "정보통신공학",
+      "period": "2017.03 ~ 2023.08",
+      "description": "정보통신공학을 전공하여 통신과 컴퓨팅 기술들을 학습하였으며, 다양한 이론과 실습을 통해 실무 능력을 배양했습니다."
+    }
+  ],
+  "certifications": [
+    {
+      "name": "토익스피킹 IM1",
+      "date": "2024.03.16"
+    },
+    {
+      "name": "SQLD (SQL 개발자)",
+      "date": "2023.12.15"
+    }
+  ],
   "social": {
-    "twitter": "",
-    "blog": "",
-    "instagram": ""
+    "github": "https://github.com/thingk0",
+    "email": "audtjd9080@naver.com"
   }
 }
