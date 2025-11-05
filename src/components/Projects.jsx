@@ -1,26 +1,8 @@
 import React from 'react'
+import projectsData from '../assets/data/projects.json'
 
 const Projects = () => {
-  const projects = [
-    {
-      title: '프로젝트 1',
-      description: '최신 웹 기술을 활용한 풀스택 웹 애플리케이션입니다. 사용자 친화적인 인터페이스와 효율적인 백엔드 구조를 갖추고 있습니다.',
-      tags: ['React', 'Node.js', 'MongoDB'],
-      gradient: 'from-blue-500 to-cyan-500',
-    },
-    {
-      title: '프로젝트 2',
-      description: 'Python과 Django를 사용한 데이터 분석 플랫폼입니다. 실시간 데이터 처리와 시각화 기능을 제공합니다.',
-      tags: ['Python', 'Django', 'PostgreSQL'],
-      gradient: 'from-purple-500 to-pink-500',
-    },
-    {
-      title: '프로젝트 3',
-      description: 'Vue.js와 Firebase를 활용한 실시간 협업 도구입니다. 팀원들과 함께 효율적으로 작업할 수 있습니다.',
-      tags: ['Vue.js', 'Firebase', 'Tailwind CSS'],
-      gradient: 'from-green-500 to-emerald-500',
-    },
-  ]
+  const projects = projectsData
 
   return (
     <section id="projects" className="py-20 bg-white">
@@ -63,24 +45,32 @@ const Projects = () => {
 
                 {/* Links */}
                 <div className="flex gap-4">
-                  <a
-                    href="#"
-                    className="text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1 transition-colors"
-                  >
-                    GitHub
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                  </a>
-                  <a
-                    href="#"
-                    className="text-purple-600 hover:text-purple-700 font-medium flex items-center gap-1 transition-colors"
-                  >
-                    Demo
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                  </a>
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1 transition-colors"
+                    >
+                      GitHub
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  )}
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-purple-600 hover:text-purple-700 font-medium flex items-center gap-1 transition-colors"
+                    >
+                      Demo
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

@@ -1,4 +1,5 @@
 import React from 'react'
+import profileData from '../assets/data/profile.json'
 
 const Hero = () => {
   return (
@@ -9,20 +10,20 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="animate-fadeInUp">
           {/* Greeting */}
-          <p className="text-blue-600 font-semibold text-lg mb-4">안녕하세요 👋</p>
+          <p className="text-blue-600 font-semibold text-lg mb-4">{profileData.greeting}</p>
 
           {/* Main Title */}
           <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
             저는{' '}
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              개발자
+              {profileData.heroTitle}
             </span>
             입니다
           </h1>
 
           {/* Description */}
           <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto">
-            웹 개발과 문제 해결을 좋아하며, 사용자 경험을 최우선으로 생각합니다
+            {profileData.heroDescription}
           </p>
 
           {/* CTA Buttons */}

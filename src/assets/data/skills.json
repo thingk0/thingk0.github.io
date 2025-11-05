@@ -1,0 +1,54 @@
+{
+  "categories": [
+    {
+      "name": "Frontend",
+      "skills": [
+        {
+          "name": "React",
+          "level": "Advanced",
+          "icon": ""
+        },
+        {
+          "name": "TypeScript",
+          "level": "Intermediate",
+          "icon": ""
+        },
+        {
+          "name": "Tailwind CSS",
+          "level": "Advanced",
+          "icon": ""
+        }
+      ]
+    },
+    {
+      "name": "Backend",
+      "skills": [
+        {
+          "name": "Node.js",
+          "level": "Intermediate",
+          "icon": ""
+        },
+        {
+          "name": "Python",
+          "level": "Advanced",
+          "icon": ""
+        }
+      ]
+    },
+    {
+      "name": "Tools & Others",
+      "skills": [
+        {
+          "name": "Git",
+          "level": "Advanced",
+          "icon": ""
+        },
+        {
+          "name": "Docker",
+          "level": "Intermediate",
+          "icon": ""
+        }
+      ]
+    }
+  ]
+}

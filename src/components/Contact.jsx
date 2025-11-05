@@ -1,29 +1,30 @@
 import React from 'react'
+import profileData from '../assets/data/profile.json'
 
 const Contact = () => {
   const contactInfo = [
     {
       icon: '📧',
       label: 'Email',
-      value: 'your.email@example.com',
-      link: 'mailto:your.email@example.com',
+      value: profileData.email,
+      link: `mailto:${profileData.email}`,
       gradient: 'from-blue-500 to-cyan-500',
     },
-    {
+    profileData.github && {
       icon: '💼',
       label: 'GitHub',
-      value: 'github.com/yourusername',
-      link: 'https://github.com/yourusername',
+      value: profileData.github.replace('https://', ''),
+      link: profileData.github,
       gradient: 'from-gray-700 to-gray-900',
     },
-    {
+    profileData.linkedin && {
       icon: '🔗',
       label: 'LinkedIn',
-      value: 'linkedin.com/in/yourusername',
-      link: 'https://linkedin.com/in/yourusername',
+      value: profileData.linkedin.replace('https://', ''),
+      link: profileData.linkedin,
       gradient: 'from-blue-600 to-blue-800',
     },
-  ]
+  ].filter(Boolean)
 
   return (
     <section id="contact" className="py-20 bg-gray-50">
@@ -63,7 +64,7 @@ const Contact = () => {
               함께 멋진 프로젝트를 만들어보실래요?
             </p>
             <a
-              href="mailto:your.email@example.com"
+              href={`mailto:${profileData.email}`}
               className="inline-block px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200"
             >
               이메일 보내기

@@ -1,0 +1,18 @@
+{
+  "name": "thingk0",
+  "title": "Developer",
+  "email": "your.email@example.com",
+  "github": "https://github.com/thingk0",
+  "linkedin": "",
+  "bio": "웹 개발과 문제 해결을 좋아하며, 사용자 경험을 최우선으로 생각합니다",
+  "greeting": "안녕하세요 👋",
+  "heroTitle": "개발자",
+  "heroDescription": "웹 개발과 문제 해결을 좋아하며, 사용자 경험을 최우선으로 생각합니다",
+  "profileImage": "",
+  "resume": "",
+  "social": {
+    "twitter": "",
+    "blog": "",
+    "instagram": ""
+  }
+}

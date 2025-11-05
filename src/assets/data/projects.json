@@ -1,0 +1,41 @@
+[
+  {
+    "id": "project-1",
+    "title": "프로젝트 1",
+    "description": "최신 웹 기술을 활용한 풀스택 웹 애플리케이션입니다. 사용자 친화적인 인터페이스와 효율적인 백엔드 구조를 갖추고 있습니다.",
+    "longDescription": "프로젝트에 대한 상세한 설명. 어떤 문제를 해결했는지, 어떤 기술을 사용했는지 등을 작성합니다.",
+    "image": "",
+    "tags": ["React", "Node.js", "MongoDB"],
+    "github": "",
+    "demo": "",
+    "date": "2024-01",
+    "featured": true,
+    "gradient": "from-blue-500 to-cyan-500"
+  },
+  {
+    "id": "project-2",
+    "title": "프로젝트 2",
+    "description": "Python과 Django를 사용한 데이터 분석 플랫폼입니다. 실시간 데이터 처리와 시각화 기능을 제공합니다.",
+    "longDescription": "프로젝트에 대한 상세한 설명",
+    "image": "",
+    "tags": ["Python", "Django", "PostgreSQL"],
+    "github": "",
+    "demo": "",
+    "date": "2023-12",
+    "featured": false,
+    "gradient": "from-purple-500 to-pink-500"
+  },
+  {
+    "id": "project-3",
+    "title": "프로젝트 3",
+    "description": "Vue.js와 Firebase를 활용한 실시간 협업 도구입니다. 팀원들과 함께 효율적으로 작업할 수 있습니다.",
+    "longDescription": "프로젝트에 대한 상세한 설명",
+    "image": "",
+    "tags": ["Vue.js", "Firebase", "Tailwind CSS"],
+    "github": "",
+    "demo": "",
+    "date": "2023-10",
+    "featured": false,
+    "gradient": "from-green-500 to-emerald-500"
+  }
+]
