@@ -1,8 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import projectsData from '../assets/data/projects.json'
+import Modal from './ui/Modal'
+import ProjectDetailModal from './ProjectDetailModal'
 
 const Projects = () => {
   const projects = projectsData
+  const [selectedProject, setSelectedProject] = useState(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleProjectClick = (project) => {
+    setSelectedProject(project)
+    setIsModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    setTimeout(() => setSelectedProject(null), 300) // 애니메이션 완료 후 상태 초기화
+  }
 
   return (
     <section id="projects" className="py-20 bg-white">
@@ -18,7 +32,8 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+              className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
+              onClick={() => handleProjectClick(project)}
             >
               {/* Project Image Placeholder */}
               <div className={`h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}>
@@ -77,6 +92,11 @@ const Projects = () => {
           ))}
         </div>
       </div>
+
+      {/* Project Detail Modal */}
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+        <ProjectDetailModal project={selectedProject} onClose={handleCloseModal} />
+      </Modal>
     </section>
   )
 }

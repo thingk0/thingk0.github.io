@@ -1,6 +1,33 @@
 import React from 'react'
+import profileData from '../assets/data/profile.json'
+import projectsData from '../assets/data/projects.json'
+import skillsData from '../assets/data/skills.json'
 
 const About = () => {
+  // 통계 데이터 계산
+  const stats = [
+    {
+      number: '1Y+',
+      label: '경력',
+      icon: '💼'
+    },
+    {
+      number: projectsData.length,
+      label: '프로젝트',
+      icon: '📁'
+    },
+    {
+      number: profileData.awards?.length || 3,
+      label: '수상 경력',
+      icon: '🏆'
+    },
+    {
+      number: skillsData.categories.reduce((sum, cat) => sum + cat.skills.length, 0),
+      label: '기술 스택',
+      icon: '⚙️'
+    }
+  ]
+
   return (
     <section id="about" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -25,29 +52,32 @@ const About = () => {
               사용자 경험을 최우선으로 생각하며, 깔끔하고 효율적인 코드를 작성하기 위해
               끊임없이 학습하고 발전하고 있습니다.
             </p>
-            <div className="flex flex-wrap gap-4 pt-4">
-              <div className="flex items-center gap-2">
-                <span className="text-2xl">💡</span>
-                <span className="text-gray-700">문제 해결</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-2xl">🎯</span>
-                <span className="text-gray-700">목표 지향적</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-2xl">🚀</span>
-                <span className="text-gray-700">빠른 학습</span>
-              </div>
+            {/* Stats Section */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-gray-200">
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <span className="text-2xl">{stat.icon}</span>
+                  </div>
+                  <div className="text-3xl md:text-4xl font-bold text-gray-900">
+                    {stat.number}
+                  </div>
+                  <div className="text-sm text-gray-600 mt-1">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Image Placeholder */}
+          {/* Profile Image */}
           <div className="relative">
-            <div className="aspect-square rounded-2xl bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
-              <div className="text-center">
-                <span className="text-6xl mb-4 block">👨‍💻</span>
-                <p className="text-gray-600 font-medium">프로필 이미지</p>
-              </div>
+            <div className="aspect-square rounded-2xl overflow-hidden shadow-lg">
+              <img
+                src="/src/assets/portrait/selfie01.webp"
+                alt="고명성 프로필 사진"
+                className="w-full h-full object-cover"
+              />
             </div>
             {/* Decorative elements */}
             <div className="absolute -top-4 -right-4 w-24 h-24 bg-blue-600 rounded-full opacity-10"></div>
