@@ -35,10 +35,20 @@ const Projects = () => {
               className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
               onClick={() => handleProjectClick(project)}
             >
-              {/* Project Image Placeholder */}
-              <div className={`h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}>
+              {/* Project Image */}
+              <div className="h-48 relative overflow-hidden bg-gray-100">
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                ) : (
+                  <div className={`h-full bg-gradient-to-br ${project.gradient} flex items-center justify-center`}>
+                    <span className="text-white text-6xl">📱</span>
+                  </div>
+                )}
                 <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-                <span className="text-white text-6xl">📱</span>
               </div>
 
               {/* Project Info */}
