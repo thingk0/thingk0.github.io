@@ -1,0 +1,26 @@
+[
+  {
+    "id": "project-1",
+    "title": "프로젝트 제목",
+    "description": "프로젝트에 대한 간단한 설명",
+    "longDescription": "프로젝트에 대한 상세한 설명. 어떤 문제를 해결했는지, 어떤 기술을 사용했는지 등을 작성합니다.",
+    "image": "/src/assets/images/projects/project1-thumbnail.jpg",
+    "tags": ["React", "Node.js", "MongoDB"],
+    "github": "https://github.com/username/project",
+    "demo": "https://project-demo.com",
+    "date": "2024-01",
+    "featured": true
+  },
+  {
+    "id": "project-2",
+    "title": "두 번째 프로젝트",
+    "description": "프로젝트 설명",
+    "longDescription": "상세 설명",
+    "image": "/src/assets/images/projects/project2-thumbnail.jpg",
+    "tags": ["Python", "Django", "PostgreSQL"],
+    "github": "https://github.com/username/project2",
+    "demo": null,
+    "date": "2023-12",
+    "featured": false
+  }
+]

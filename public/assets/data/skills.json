@@ -6,32 +6,32 @@
         {
           "name": "Java",
           "level": "Advanced",
-          "icon": "/assets/icons/languages/java.svg"
+          "icon": "/src/assets/icons/languages/java.svg"
         },
         {
           "name": "Kotlin",
           "level": "Advanced",
-          "icon": "/assets/icons/languages/kotlin.svg"
+          "icon": "/src/assets/icons/languages/kotlin.svg"
         },
         {
           "name": "Python",
           "level": "Intermediate",
-          "icon": "/assets/icons/languages/python.svg"
+          "icon": "/src/assets/icons/languages/python.svg"
         },
         {
           "name": "JavaScript",
           "level": "Intermediate",
-          "icon": "/assets/icons/languages/javascript.svg"
+          "icon": "/src/assets/icons/languages/javascript.svg"
         },
         {
           "name": "HTML",
           "level": "Advanced",
-          "icon": "/assets/icons/languages/html.svg"
+          "icon": "/src/assets/icons/languages/html.svg"
         },
         {
           "name": "CSS",
           "level": "Intermediate",
-          "icon": "/assets/icons/languages/css.svg"
+          "icon": "/src/assets/icons/languages/css.svg"
         }
       ]
     },
@@ -41,17 +41,17 @@
         {
           "name": "Spring",
           "level": "Advanced",
-          "icon": "/assets/icons/frameworks/spring.svg"
+          "icon": "/src/assets/icons/frameworks/spring.svg"
         },
         {
           "name": "FastAPI",
           "level": "Intermediate",
-          "icon": "/assets/icons/frameworks/fastapi.svg"
+          "icon": "/src/assets/icons/frameworks/fastapi.svg"
         },
         {
           "name": "Nest.js",
           "level": "Intermediate",
-          "icon": "/assets/icons/frameworks/nest.svg"
+          "icon": "/src/assets/icons/frameworks/nest.svg"
         }
       ]
     },
@@ -61,27 +61,27 @@
         {
           "name": "PostgreSQL",
           "level": "Advanced",
-          "icon": "/assets/icons/databases/postgresql.svg"
+          "icon": "/src/assets/icons/databases/postgresql.svg"
         },
         {
           "name": "MySQL",
           "level": "Intermediate",
-          "icon": "/assets/icons/databases/mysql.svg"
+          "icon": "/src/assets/icons/databases/mysql.svg"
         },
         {
           "name": "Redis",
           "level": "Intermediate",
-          "icon": "/assets/icons/databases/redis.svg"
+          "icon": "/src/assets/icons/databases/redis.svg"
         },
         {
           "name": "Elasticsearch",
           "level": "Intermediate",
-          "icon": "/assets/icons/databases/elasticsearch.svg"
+          "icon": "/src/assets/icons/databases/elasticsearch.svg"
         },
         {
           "name": "Milvus",
           "level": "Intermediate",
-          "icon": "/assets/icons/databases/milvus.svg"
+          "icon": "/src/assets/icons/databases/milvus.svg"
         }
       ]
     },
@@ -91,12 +91,12 @@
         {
           "name": "React",
           "level": "Advanced",
-          "icon": "/assets/icons/frontend/react.svg"
+          "icon": "/src/assets/icons/frontend/react.svg"
         },
         {
           "name": "Tailwind CSS",
           "level": "Advanced",
-          "icon": "/assets/icons/frontend/tailwindcss.svg"
+          "icon": "/src/assets/icons/frontend/tailwindcss.svg"
         }
       ]
     },
@@ -106,22 +106,22 @@
         {
           "name": "Docker",
           "level": "Advanced",
-          "icon": "/assets/icons/devops/docker.svg"
+          "icon": "/src/assets/icons/devops/docker.svg"
         },
         {
           "name": "Kafka",
           "level": "Intermediate",
-          "icon": "/assets/icons/devops/kafka.svg"
+          "icon": "/src/assets/icons/devops/kafka.svg"
         },
         {
           "name": "Nginx",
           "level": "Intermediate",
-          "icon": "/assets/icons/devops/nginx.svg"
+          "icon": "/src/assets/icons/devops/nginx.svg"
         },
         {
           "name": "Jenkins",
           "level": "Intermediate",
-          "icon": "/assets/icons/devops/jenkins.svg"
+          "icon": "/src/assets/icons/devops/jenkins.svg"
         }
       ]
     },
@@ -131,12 +131,12 @@
         {
           "name": "Git",
           "level": "Advanced",
-          "icon": "/assets/icons/dev-tools/git.svg"
+          "icon": "/src/assets/icons/dev-tools/git.svg"
         },
         {
           "name": "IntelliJ IDEA",
           "level": "Advanced",
-          "icon": "/assets/icons/dev-tools/intellij.svg"
+          "icon": "/src/assets/icons/dev-tools/intellij.svg"
         }
       ]
     },
@@ -146,12 +146,12 @@
         {
           "name": "LangChain",
           "level": "Intermediate",
-          "icon": "/assets/icons/ai-ml/langchain.svg"
+          "icon": "/src/assets/icons/ai-ml/langchain.svg"
         },
         {
           "name": "OpenAI",
           "level": "Intermediate",
-          "icon": "/assets/icons/ai-ml/openai.svg"
+          "icon": "/src/assets/icons/ai-ml/openai.svg"
         }
       ]
     },
@@ -161,22 +161,22 @@
         {
           "name": "Jira",
           "level": "Intermediate",
-          "icon": "/assets/icons/collaboration/jira.svg"
+          "icon": "/src/assets/icons/collaboration/jira.svg"
         },
         {
           "name": "Confluence",
           "level": "Intermediate",
-          "icon": "/assets/icons/collaboration/confluence.svg"
+          "icon": "/src/assets/icons/collaboration/confluence.svg"
         },
         {
           "name": "Notion",
           "level": "Advanced",
-          "icon": "/assets/icons/collaboration/notion.svg"
+          "icon": "/src/assets/icons/collaboration/notion.svg"
         },
         {
           "name": "Slack",
           "level": "Intermediate",
-          "icon": "/assets/icons/collaboration/slack.svg"
+          "icon": "/src/assets/icons/collaboration/slack.svg"
         }
       ]
     },
@@ -186,12 +186,12 @@
         {
           "name": "Figma",
           "level": "Advanced",
-          "icon": "/assets/icons/design/figma.svg"
+          "icon": "/src/assets/icons/design/figma.svg"
         },
         {
           "name": "Adobe Premiere Pro",
           "level": "Advanced",
-          "icon": "/assets/icons/design/premierpro.svg"
+          "icon": "/src/assets/icons/design/premierpro.svg"
         }
       ]
     }

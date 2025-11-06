@@ -74,7 +74,7 @@ const About = () => {
           <div className="relative">
             <div className="aspect-square rounded-2xl overflow-hidden shadow-lg">
               <img
-                src="/src/assets/portrait/selfie01.webp"
+                src="/assets/portrait/selfie01.webp"
                 alt="고명성 프로필 사진"
                 className="w-full h-full object-cover"
               />
