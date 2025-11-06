@@ -36,6 +36,7 @@
       "company": "빅스데이터",
       "department": "기술개발본부",
       "period": "2024.07 ~ 현재",
+      "logo": "/assets/logos/bigxdata.webp",
       "positions": [
         {
           "title": "백엔드 엔지니어",
@@ -74,6 +75,7 @@
       "institution": "삼성 청년 소프트웨어 아카데미 (SSAFY 10th)",
       "period": "2023.07 ~ 2024.06",
       "duration": "1년",
+      "logo": "/assets/logos/ssafy.webp",
       "description": "삼성전자에서 주관하는 청년 소프트웨어 인재 양성 교육 과정으로 프로젝트를 중심으로 학습 및 실습을 진행했습니다."
     },
     {
@@ -81,6 +83,7 @@
       "institution": "명지대학교",
       "major": "정보통신공학",
       "period": "2017.03 ~ 2023.08",
+      "logo": "/assets/logos/mju.webp",
       "description": "정보통신공학을 전공하여 통신과 컴퓨팅 기술들을 학습하였으며, 다양한 이론과 실습을 통해 실무 능력을 배양했습니다."
     }
   ],

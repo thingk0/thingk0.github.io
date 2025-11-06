@@ -4,7 +4,7 @@ import profileData from '../assets/data/profile.json'
 const Career = () => {
   return (
     <section id="career" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -25,9 +25,18 @@ const Career = () => {
                 {/* Job content */}
                 <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
-                    <div>
-                      <h4 className="text-xl font-bold text-gray-900">{job.company}</h4>
-                      <p className="text-sm text-gray-600 mt-1">{job.department}</p>
+                    <div className="flex items-center gap-4">
+                      {job.logo && (
+                        <img
+                          src={job.logo}
+                          alt={`${job.company} 로고`}
+                          className="h-16 w-auto object-contain flex-shrink-0"
+                        />
+                      )}
+                      <div>
+                        <h4 className="text-xl font-bold text-gray-900">{job.company}</h4>
+                        <p className="text-sm text-gray-600 mt-1">{job.department}</p>
+                      </div>
                     </div>
                     <span className="text-sm font-semibold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full w-fit">
                       {job.period}
@@ -108,10 +117,21 @@ const Career = () => {
                             {edu.type}
                           </span>
                         </div>
-                      <h4 className="text-lg font-bold text-gray-900">{edu.institution}</h4>
-                      {edu.major && (
-                        <p className="text-sm text-gray-600 mt-1">전공: {edu.major}</p>
-                      )}
+                        <div className="flex items-center gap-4">
+                          {edu.logo && (
+                            <img
+                              src={edu.logo}
+                              alt={`${edu.institution} 로고`}
+                              className="h-16 w-auto object-contain flex-shrink-0"
+                            />
+                          )}
+                          <div>
+                            <h4 className="text-lg font-bold text-gray-900">{edu.institution}</h4>
+                            {edu.major && (
+                              <p className="text-sm text-gray-600 mt-1">전공: {edu.major}</p>
+                            )}
+                          </div>
+                        </div>
                     </div>
                     <div className="text-right md:text-left">
                       <p className="font-semibold text-gray-900">{edu.period}</p>
