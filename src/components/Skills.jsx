@@ -68,7 +68,7 @@ const Skills = () => {
         </div>
 
         {/* Tab Navigation */}
-        <div className="mb-12 flex flex-wrap gap-2 border-b border-gray-200 overflow-x-auto pb-4">
+        <div className="mb-12 flex gap-2 border-b border-gray-200 overflow-x-auto pb-4">
           {skillsData.categories.map((category) => (
             <button
               key={category.name}

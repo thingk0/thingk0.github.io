@@ -72,7 +72,7 @@ const About = () => {
 
           {/* Profile Image */}
           <div className="relative">
-            <div className="aspect-square rounded-2xl overflow-hidden shadow-lg">
+            <div className="aspect-square rounded-2xl overflow-hidden">
               <img
                 src="/assets/portrait/selfie01.webp"
                 alt="고명성 프로필 사진"

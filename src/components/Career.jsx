@@ -10,7 +10,7 @@ const Career = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Career
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto"></div>
+          <div className="w-20 h-1 bg-indigo-500 mx-auto"></div>
         </div>
 
         {/* Work Experience Section */}
@@ -18,18 +18,18 @@ const Career = () => {
           <h3 className="text-2xl font-bold text-gray-900 mb-8">경력</h3>
           <div className="space-y-8">
             {profileData.career?.map((job, jobIndex) => (
-              <div key={jobIndex} className="relative pl-8 border-l-2 border-blue-600">
+              <div key={jobIndex} className="relative pl-8 border-l-2 border-indigo-500">
                 {/* Timeline dot */}
-                <div className="absolute left-0 top-0 w-4 h-4 bg-blue-600 rounded-full transform -translate-x-2.5"></div>
+                <div className="absolute left-0 top-0 w-4 h-4 bg-indigo-500 rounded-full transform -translate-x-2.5 hover:scale-110 transition-transform duration-200"></div>
 
                 {/* Job content */}
-                <div className="bg-gray-50 rounded-lg p-6">
+                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
                     <div>
                       <h4 className="text-xl font-bold text-gray-900">{job.company}</h4>
                       <p className="text-sm text-gray-600 mt-1">{job.department}</p>
                     </div>
-                    <span className="text-sm font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full w-fit">
+                    <span className="text-sm font-semibold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full w-fit">
                       {job.period}
                     </span>
                   </div>
@@ -56,21 +56,30 @@ const Career = () => {
         {profileData.awards?.length > 0 && (
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-gray-900 mb-8">수상</h3>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="space-y-8">
               {profileData.awards.map((award, index) => (
-                <div
-                  key={index}
-                  className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg p-6 border border-blue-100 shadow-md hover:shadow-lg transition-shadow duration-300"
-                >
-                  <div className="mb-4">
-                    <div className="text-3xl mb-2">🏆</div>
-                    <span className="inline-block text-xs font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 px-3 py-1 rounded-full">
-                      {award.award}
-                    </span>
+                <div key={index} className="relative pl-8 border-l-2 border-amber-400">
+                  {/* Timeline dot */}
+                  <div className="absolute left-0 top-0 w-4 h-4 bg-amber-400 rounded-full transform -translate-x-2.5 hover:scale-110 transition-transform duration-200"></div>
+
+                  {/* Award content */}
+                  <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-3">
+                      <div className="flex items-center gap-3">
+                        <span className="text-2xl">🏆</span>
+                        <div>
+                          <span className="inline-block text-xs font-bold text-amber-600 bg-amber-50 px-3 py-1 rounded-full mb-2">
+                            {award.award}
+                          </span>
+                          <h4 className="font-semibold text-gray-900">{award.project}</h4>
+                        </div>
+                      </div>
+                      <span className="text-sm font-semibold text-gray-600 bg-gray-50 px-3 py-1 rounded-full w-fit">
+                        {award.date}
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-600 pl-11">{award.event}</p>
                   </div>
-                  <p className="text-xs text-gray-600 mb-2">{award.date}</p>
-                  <h4 className="font-semibold text-gray-900 mb-2">{award.project}</h4>
-                  <p className="text-sm text-gray-600">{award.event}</p>
                 </div>
               ))}
             </div>
@@ -81,19 +90,24 @@ const Career = () => {
         {profileData.education?.length > 0 && (
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-gray-900 mb-8">학력</h3>
-            <div className="space-y-6">
+            <div className="space-y-8">
               {profileData.education.map((edu, index) => (
                 <div
                   key={index}
-                  className="bg-gray-50 rounded-lg p-6 border-l-4 border-blue-600 hover:shadow-md transition-shadow duration-300"
+                  className="relative pl-8 border-l-2 border-indigo-500"
                 >
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-3">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className="inline-block px-3 py-1 text-xs font-semibold text-blue-600 bg-blue-100 rounded-full">
-                          {edu.type}
-                        </span>
-                      </div>
+                  {/* Timeline dot */}
+                  <div className="absolute left-0 top-0 w-4 h-4 bg-indigo-500 rounded-full transform -translate-x-2.5 hover:scale-110 transition-transform duration-200"></div>
+
+                  {/* Education content */}
+                  <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300">
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-3">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="inline-block px-3 py-1 text-xs font-semibold text-indigo-600 bg-indigo-50 rounded-full">
+                            {edu.type}
+                          </span>
+                        </div>
                       <h4 className="text-lg font-bold text-gray-900">{edu.institution}</h4>
                       {edu.major && (
                         <p className="text-sm text-gray-600 mt-1">전공: {edu.major}</p>
@@ -111,6 +125,7 @@ const Career = () => {
                       {edu.description}
                     </p>
                   )}
+                  </div>
                 </div>
               ))}
             </div>
@@ -121,18 +136,22 @@ const Career = () => {
         {profileData.certifications?.length > 0 && (
           <div>
             <h3 className="text-2xl font-bold text-gray-900 mb-8">자격증</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {profileData.certifications.map((cert, index) => (
                 <div
                   key={index}
-                  className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 border border-green-200 shadow-sm hover:shadow-md transition-shadow duration-300"
+                  className="bg-white rounded-lg p-6 border border-gray-200 border-l-4 border-l-green-400 shadow-sm hover:shadow-md transition-all duration-300"
                 >
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-3 mb-4">
                     <span className="text-2xl">📜</span>
                     <div className="flex-1">
                       <h4 className="font-semibold text-gray-900">{cert.name}</h4>
-                      <p className="text-sm text-gray-600 mt-1">{cert.date}</p>
                     </div>
+                  </div>
+                  <div>
+                    <span className="inline-block text-xs font-semibold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">
+                      {cert.date}
+                    </span>
                   </div>
                 </div>
               ))}
