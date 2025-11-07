@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect, useRef } from 'react'
 import projectsData from '../../assets/data/projects.json'
 import Modal from '../ui/Modal'
 import ProjectDetailModal from '../modals/ProjectDetailModal'
@@ -11,6 +11,8 @@ const Projects = () => {
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false)
   const [isListModalOpen, setIsListModalOpen] = useState(false)
   const [fromList, setFromList] = useState(false)
+  const [visibleCards, setVisibleCards] = useState(new Set())
+  const cardRefs = useRef([])
 
   // Get 3 most recent projects
   const recentProjects = useMemo(() => {
@@ -18,6 +20,32 @@ const Projects = () => {
       .sort((a, b) => b.date.localeCompare(a.date))
       .slice(0, 3)
   }, [])
+
+  useEffect(() => {
+    const observers = cardRefs.current.map((ref, index) => {
+      if (!ref) return null
+      
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setVisibleCards(prev => new Set([...prev, index]))
+          }
+        },
+        { threshold: 0.1 }
+      )
+      
+      observer.observe(ref)
+      return observer
+    })
+
+    return () => {
+      observers.forEach(observer => observer?.disconnect())
+    }
+  }, [recentProjects])
+
+  const setCardRef = (index) => (el) => {
+    cardRefs.current[index] = el
+  }
 
   const handleProjectClick = (project) => {
     setSelectedProject(project)
@@ -61,7 +89,11 @@ const Projects = () => {
           {recentProjects.map((project, index) => (
             <div
               key={index}
-              className="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
+              ref={setCardRef(index)}
+              className={`group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-2 cursor-pointer ${
+                visibleCards.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+              style={{ transitionDelay: `${index * 150}ms` }}
               onClick={() => handleProjectClick(project)}
             >
               {/* Project Image */}

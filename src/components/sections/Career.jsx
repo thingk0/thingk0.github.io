@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import careerData from '../../assets/data/career.json'
 import educationData from '../../assets/data/education.json'
 import awardsData from '../../assets/data/awards.json'
@@ -15,6 +15,34 @@ const Career = () => {
       return job.positions?.length > 0 ? job.positions.length - 1 : 0
     }) || []
   )
+  const [visibleItems, setVisibleItems] = useState(new Set())
+  const itemRefs = useRef([])
+
+  useEffect(() => {
+    const observers = itemRefs.current.map((ref, index) => {
+      if (!ref) return null
+      
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setVisibleItems(prev => new Set([...prev, index]))
+          }
+        },
+        { threshold: 0.1 }
+      )
+      
+      observer.observe(ref)
+      return observer
+    })
+
+    return () => {
+      observers.forEach(observer => observer?.disconnect())
+    }
+  }, [careerData, educationData, awardsData])
+
+  const setItemRef = (index) => (el) => {
+    itemRefs.current[index] = el
+  }
   // Helper function to get skill icon from skills.json
   const getSkillIcon = (skillName) => {
     for (const category of skillsData.categories) {
@@ -63,7 +91,13 @@ const Career = () => {
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">경력</h3>
           <div className="space-y-8">
             {careerData?.map((job, jobIndex) => (
-              <div key={jobIndex} className="relative pl-8 border-l-2 border-blue-500">
+              <div 
+                key={jobIndex} 
+                ref={setItemRef(jobIndex)}
+                className={`relative pl-8 border-l-2 border-blue-500 transition-all duration-700 ${
+                  visibleItems.has(jobIndex) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+              >
                 {/* Timeline dot */}
                 <div className="absolute left-0 top-0 w-4 h-4 bg-blue-500 rounded-full transform -translate-x-2.5 hover:scale-110 transition-transform duration-200"></div>
 
@@ -82,7 +116,16 @@ const Career = () => {
                       )}
                       <div>
                         <h4 className="text-xl font-bold text-gray-900 dark:text-white">{job.company}</h4>
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{job.department}</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                          {job.department}
+                          {job.level && <span className="mx-2">|</span>}
+                          {job.level && <span className="font-semibold">{job.level}</span>}
+                        </p>
+                        {job.totalPeriod && (
+                          <p className="text-xs text-blue-600 dark:text-blue-400 font-semibold mt-1">
+                            총 재직기간: {job.totalPeriod}
+                          </p>
+                        )}
                       </div>
                     </div>
 
@@ -161,7 +204,7 @@ const Career = () => {
                         {job.positions[activePositions[jobIndex]].achievements.map((achievement, idx) => (
                           <div
                             key={idx}
-                            className="p-3 bg-green-50 dark:bg-green-900/20 border-l-3 border-green-500 text-sm text-gray-700 dark:text-green-300 rounded"
+                            className="p-3 bg-blue-50 dark:bg-blue-900/20 border-l-3 border-blue-500 text-sm text-gray-700 dark:text-blue-300 rounded"
                           >
                             {achievement}
                           </div>
@@ -180,11 +223,16 @@ const Career = () => {
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">학력</h3>
             <div className="space-y-8">
-              {educationData.map((edu, index) => (
-                <div
-                  key={index}
-                  className="relative pl-8 border-l-2 border-indigo-500"
-                >
+              {educationData.map((edu, index) => {
+                const itemIndex = careerData.length + index
+                return (
+                  <div
+                    key={index}
+                    ref={setItemRef(itemIndex)}
+                    className={`relative pl-8 border-l-2 border-indigo-500 transition-all duration-700 ${
+                      visibleItems.has(itemIndex) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                    }`}
+                  >
                   {/* Timeline dot */}
                   <div className="absolute left-0 top-0 w-4 h-4 bg-indigo-500 rounded-full transform -translate-x-2.5 hover:scale-110 transition-transform duration-200"></div>
 
@@ -250,7 +298,8 @@ const Career = () => {
                   )}
                   </div>
                 </div>
-              ))}
+                )
+              })}
             </div>
           </div>
         )}
@@ -260,8 +309,16 @@ const Career = () => {
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">수상</h3>
             <div className="space-y-8">
-              {awardsData.map((award, index) => (
-                <div key={index} className="relative pl-8 border-l-2 border-amber-400">
+              {awardsData.map((award, index) => {
+                const itemIndex = careerData.length + educationData.length + index
+                return (
+                  <div 
+                    key={index} 
+                    ref={setItemRef(itemIndex)}
+                    className={`relative pl-8 border-l-2 border-amber-400 transition-all duration-700 ${
+                      visibleItems.has(itemIndex) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                    }`}
+                  >
                   {/* Timeline dot */}
                   <div className="absolute left-0 top-0 w-4 h-4 bg-amber-400 rounded-full transform -translate-x-2.5 hover:scale-110 transition-transform duration-200"></div>
 
@@ -322,7 +379,8 @@ const Career = () => {
                     <p className="relative z-10 text-sm text-gray-600 dark:text-gray-400">{award.event}</p>
                   </div>
                 </div>
-              ))}
+                )
+              })}
             </div>
           </div>
         )}
