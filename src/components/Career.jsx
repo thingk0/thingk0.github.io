@@ -1,6 +1,7 @@
 import React from 'react'
 import profileData from '../assets/data/profile.json'
 import SectionTitle from './ui/SectionTitle'
+import Badge from './ui/Badge'
 
 const Career = () => {
   const renderProjectName = (projectText) => {
@@ -61,9 +62,9 @@ const Career = () => {
                         <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{job.department}</p>
                       </div>
                     </div>
-                    <span className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 px-3 py-1 rounded-full w-fit">
+                    <Badge variant="indigo" size="md">
                       {job.period}
-                    </span>
+                    </Badge>
                   </div>
 
                   {/* Positions */}
@@ -100,12 +101,9 @@ const Career = () => {
                       <h5 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">기술 스택</h5>
                       <div className="flex flex-wrap gap-2">
                         {job.techStack.map((tech, idx) => (
-                          <span
-                            key={idx}
-                            className="px-3 py-1 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 rounded-full text-xs font-medium"
-                          >
+                          <Badge key={idx} variant="indigo" size="sm">
                             {tech}
-                          </span>
+                          </Badge>
                         ))}
                       </div>
                     </div>
@@ -149,13 +147,13 @@ const Career = () => {
                   {/* Education content */}
                   <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300">
                     <div>
-                      <div className="flex gap-2 mb-3">
-                        <span className="inline-block px-3 py-1 text-xs font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 rounded-full">
+                      <div className="flex items-center gap-2 mb-3">
+                        <Badge variant="indigo" size="sm">
                           {edu.type}
-                        </span>
-                        <span className="text-sm font-semibold text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 px-3 py-1 rounded-full w-fit">
+                        </Badge>
+                        <Badge variant="gray" size="sm">
                           {edu.period}
-                        </span>
+                        </Badge>
                       </div>
                       <div className="flex items-center gap-4">
                         {edu.logo && (
@@ -166,7 +164,33 @@ const Career = () => {
                           />
                         )}
                         <div>
-                          <h4 className="text-lg font-bold text-gray-900 dark:text-white">{edu.institution}</h4>
+                          <div className="flex items-center gap-2">
+                            <h4 className="text-lg font-bold text-gray-900 dark:text-white">{edu.institution}</h4>
+                            {edu.url && (
+                              <a
+                                href={edu.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex-shrink-0 text-gray-500 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors duration-200"
+                                title="바로가기"
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-5 w-5"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                  strokeWidth={2}
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                  />
+                                </svg>
+                              </a>
+                            )}
+                          </div>
                           {edu.major && (
                             <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                               전공: {edu.major} {edu.duration && `(${edu.duration})`}
@@ -233,19 +257,21 @@ const Career = () => {
 
                     {/* Content */}
                     <div className="relative z-10">
-                      <div className="flex gap-2 mb-3">
-                        <span className={`inline-block text-xs font-bold px-3 py-1 rounded-full ${
-                          award.award === "최우수"
-                            ? "text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/30"
-                            : award.award === "우수"
-                            ? "text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/30"
-                            : "text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-800"
-                        }`}>
+                      <div className="flex items-center gap-2 mb-3">
+                        <Badge 
+                          variant={
+                            award.award === "최우수" ? "amber"
+                            : award.award === "우수" ? "slate"
+                            : "gray"
+                          }
+                          size="sm"
+                          className="font-bold"
+                        >
                           {award.award}
-                        </span>
-                        <span className="text-sm font-semibold text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 px-3 py-1 rounded-full w-fit">
+                        </Badge>
+                        <Badge variant="gray" size="sm">
                           {award.date}
-                        </span>
+                        </Badge>
                       </div>
                       <h4 className="text-gray-900 dark:text-white">{renderProjectName(award.project)}</h4>
                     </div>
