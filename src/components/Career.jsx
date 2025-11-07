@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import profileData from '../assets/data/profile.json'
 import skillsData from '../assets/data/skills.json'
 import SectionTitle from './ui/SectionTitle'
@@ -6,6 +6,12 @@ import Badge from './ui/Badge'
 import SkillBadge from './ui/SkillBadge'
 
 const Career = () => {
+  const [activePositions, setActivePositions] = useState(
+    profileData.career?.map((job) => {
+      // Find the latest position (current position)
+      return job.positions?.length > 0 ? job.positions.length - 1 : 0
+    }) || []
+  )
   // Helper function to get skill icon from skills.json
   const getSkillIcon = (skillName) => {
     for (const category of skillsData.categories) {
@@ -60,8 +66,10 @@ const Career = () => {
 
                 {/* Job content */}
                 <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
-                    <div className="flex items-center gap-4">
+                  {/* Company Info + Position Tabs */}
+                  <div className="flex flex-col lg:flex-row lg:items-center gap-4 mb-6 pb-6 border-b border-gray-200 dark:border-gray-700">
+                    {/* Company Info */}
+                    <div className="flex items-center gap-4 flex-shrink-0">
                       {job.logo && (
                         <img
                           src={job.logo}
@@ -74,32 +82,49 @@ const Career = () => {
                         <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{job.department}</p>
                       </div>
                     </div>
-                    <Badge variant="blue" size="md">
-                      {job.period}
-                    </Badge>
-                  </div>
 
-                  {/* Positions */}
-                  <div className="space-y-3 mb-6 pb-6 border-b border-gray-200 dark:border-gray-700">
-                    {job.positions?.map((position, posIndex) => (
-                      <div
-                        key={posIndex}
-                        className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pl-4 border-l-2 border-gray-300 dark:border-gray-600"
-                      >
-                        <span className="font-medium text-gray-900 dark:text-white">{position.title}</span>
-                        <span className="text-sm text-gray-600 dark:text-gray-400">{position.period}</span>
-                      </div>
-                    ))}
+                    {/* Separator */}
+                    <div className="hidden lg:block w-px h-12 bg-gray-300 dark:bg-gray-600 flex-shrink-0"></div>
+
+                    {/* Position Tabs */}
+                    <div className="flex gap-2 flex-wrap">
+                      {job.positions?.map((position, posIndex) => (
+                        <button
+                          key={posIndex}
+                          onClick={() => {
+                            const newActivePositions = [...activePositions]
+                            newActivePositions[jobIndex] = posIndex
+                            setActivePositions(newActivePositions)
+                          }}
+                          className={`px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 ${
+                            activePositions[jobIndex] === posIndex
+                              ? 'bg-blue-500 text-white shadow-md'
+                              : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                          }`}
+                        >
+                          <div className="text-left">
+                            <div className="font-semibold">{position.title}</div>
+                            <div className={`text-xs mt-0.5 ${
+                              activePositions[jobIndex] === posIndex 
+                                ? 'text-blue-100' 
+                                : 'text-gray-500 dark:text-gray-400'
+                            }`}>
+                              {position.period}
+                            </div>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
                   </div>
 
                   {/* Responsibilities */}
-                  {job.responsibilities?.length > 0 && (
+                  {job.positions?.[activePositions[jobIndex]]?.responsibilities?.length > 0 && (
                     <div className="mb-6">
                       <h5 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">담당 업무</h5>
                       <ul className="space-y-2">
-                        {job.responsibilities.map((responsibility, idx) => (
+                        {job.positions[activePositions[jobIndex]].responsibilities.map((responsibility, idx) => (
                           <li key={idx} className="flex gap-3 text-sm text-gray-600 dark:text-gray-400">
-                            <span className="flex-shrink-0 mt-1.5">•</span>
+                            <span className="flex-shrink-0">•</span>
                             <span>{responsibility}</span>
                           </li>
                         ))}
@@ -108,11 +133,11 @@ const Career = () => {
                   )}
 
                   {/* Tech Stack */}
-                  {job.techStack?.length > 0 && (
+                  {job.positions?.[activePositions[jobIndex]]?.techStack?.length > 0 && (
                     <div className="mb-6">
                       <h5 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">기술 스택</h5>
                       <div className="flex flex-wrap gap-2">
-                        {job.techStack.map((tech, idx) => (
+                        {job.positions[activePositions[jobIndex]].techStack.map((tech, idx) => (
                           <SkillBadge 
                             key={idx} 
                             name={tech}
@@ -126,11 +151,11 @@ const Career = () => {
                   )}
 
                   {/* Achievements */}
-                  {job.achievements?.length > 0 && (
+                  {job.positions?.[activePositions[jobIndex]]?.achievements?.length > 0 && (
                     <div>
                       <h5 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">주요 성과</h5>
                       <div className="space-y-2">
-                        {job.achievements.map((achievement, idx) => (
+                        {job.positions[activePositions[jobIndex]].achievements.map((achievement, idx) => (
                           <div
                             key={idx}
                             className="p-3 bg-green-50 dark:bg-green-900/20 border-l-3 border-green-500 text-sm text-gray-700 dark:text-green-300 rounded"
