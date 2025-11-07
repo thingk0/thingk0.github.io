@@ -2,6 +2,20 @@ import React from 'react'
 import profileData from '../assets/data/profile.json'
 
 const Career = () => {
+  const renderProjectName = (projectText) => {
+    const match = projectText.match(/^(.*?)[''](.+?)[''](.*)$/)
+    if (match) {
+      return (
+        <>
+          <span className="font-normal">{match[1]}</span>
+          <span className="font-bold">'{match[2]}'</span>
+          <span className="font-normal">{match[3]}</span>
+        </>
+      )
+    }
+    return <span className="font-semibold">{projectText}</span>
+  }
+
   return (
     <section id="career" className="py-20 bg-white dark:bg-gray-900">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -76,36 +90,33 @@ const Career = () => {
 
                   {/* Education content */}
                   <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300">
-                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-3">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-2">
-                          <span className="inline-block px-3 py-1 text-xs font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 rounded-full">
-                            {edu.type}
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-4">
-                          {edu.logo && (
-                            <img
-                              src={edu.logo}
-                              alt={`${edu.institution} 로고`}
-                              className="h-16 w-auto object-contain flex-shrink-0"
-                            />
+                    <div>
+                      <div className="flex gap-2 mb-3">
+                        <span className="inline-block px-3 py-1 text-xs font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 rounded-full">
+                          {edu.type}
+                        </span>
+                        <span className="text-sm font-semibold text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 px-3 py-1 rounded-full w-fit">
+                          {edu.period}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-4">
+                        {edu.logo && (
+                          <img
+                            src={edu.logo}
+                            alt={`${edu.institution} 로고`}
+                            className="h-16 w-auto object-contain flex-shrink-0"
+                          />
+                        )}
+                        <div>
+                          <h4 className="text-lg font-bold text-gray-900 dark:text-white">{edu.institution}</h4>
+                          {edu.major && (
+                            <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                              전공: {edu.major} {edu.duration && `(${edu.duration})`}
+                            </p>
                           )}
-                          <div>
-                            <h4 className="text-lg font-bold text-gray-900 dark:text-white">{edu.institution}</h4>
-                            {edu.major && (
-                              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">전공: {edu.major}</p>
-                            )}
-                          </div>
                         </div>
+                      </div>
                     </div>
-                    <div className="text-right md:text-left">
-                      <p className="font-semibold text-gray-900 dark:text-white">{edu.period}</p>
-                      {edu.duration && (
-                        <p className="text-sm text-gray-600 dark:text-gray-400">({edu.duration})</p>
-                      )}
-                    </div>
-                  </div>
                   {edu.description && (
                     <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
                       {edu.description}
@@ -130,9 +141,9 @@ const Career = () => {
 
                   {/* Award content */}
                   <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-3">
-                      <div>
-                        <span className={`inline-block text-xs font-bold px-3 py-1 rounded-full mb-2 ${
+                    <div>
+                      <div className="flex gap-2 mb-3">
+                        <span className={`inline-block text-xs font-bold px-3 py-1 rounded-full ${
                           award.award === "최우수"
                             ? "text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/30"
                             : award.award === "우수"
@@ -141,11 +152,11 @@ const Career = () => {
                         }`}>
                           {award.award}
                         </span>
-                        <h4 className="font-semibold text-gray-900 dark:text-white">{award.project}</h4>
+                        <span className="text-sm font-semibold text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 px-3 py-1 rounded-full w-fit">
+                          {award.date}
+                        </span>
                       </div>
-                      <span className="text-sm font-semibold text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 px-3 py-1 rounded-full w-fit">
-                        {award.date}
-                      </span>
+                      <h4 className="text-gray-900 dark:text-white">{renderProjectName(award.project)}</h4>
                     </div>
                     <p className="text-sm text-gray-600 dark:text-gray-400">{award.event}</p>
                   </div>
