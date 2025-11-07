@@ -156,23 +156,14 @@ const Career = () => {
         {profileData.certifications?.length > 0 && (
           <div>
             <h3 className="text-2xl font-bold text-gray-900 mb-8">자격증</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="flex flex-wrap gap-3">
               {profileData.certifications.map((cert, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-lg p-6 border border-gray-200 border-l-4 border-l-green-400 shadow-sm hover:shadow-md transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-200 rounded-full"
                 >
-                  <div className="flex items-start gap-3 mb-4">
-                    <span className="text-2xl">📜</span>
-                    <div className="flex-1">
-                      <h4 className="font-semibold text-gray-900">{cert.name}</h4>
-                    </div>
-                  </div>
-                  <div>
-                    <span className="inline-block text-xs font-semibold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">
-                      {cert.date}
-                    </span>
-                  </div>
+                  <span className="font-semibold text-gray-900">{cert.name}</span>
+                  <span className="text-sm text-gray-600">• {cert.date}</span>
                 </div>
               ))}
             </div>
