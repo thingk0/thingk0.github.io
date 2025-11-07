@@ -16,6 +16,19 @@ const Career = () => {
     return <span className="font-semibold">{projectText}</span>
   }
 
+  const getProjectImage = (projectName) => {
+    if (projectName.includes('스마토링') || projectName.includes('Smartoring')) {
+      return '/assets/images/projects/smartoring.webp'
+    }
+    if (projectName.includes('이음페이') || projectName.includes('IEUM-Pay')) {
+      return '/assets/images/projects/ieumpay.webp'
+    }
+    if (projectName.includes('마이브러리') || projectName.includes('MyBrary')) {
+      return '/assets/images/projects/mybrary.webp'
+    }
+    return null
+  }
+
   return (
     <section id="career" className="py-20 bg-white dark:bg-gray-900">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -140,8 +153,41 @@ const Career = () => {
                   <div className="absolute left-0 top-0 w-4 h-4 bg-amber-400 rounded-full transform -translate-x-2.5 hover:scale-110 transition-transform duration-200"></div>
 
                   {/* Award content */}
-                  <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300">
-                    <div>
+                  <div className="relative bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
+                    {/* Background layer - Image or Gradient */}
+                    {getProjectImage(award.project) ? (
+                      <>
+                        {/* Light mode */}
+                        <div
+                          className="absolute inset-y-0 right-0 w-1/2 pointer-events-none opacity-30 dark:hidden"
+                          style={{
+                            backgroundImage: `linear-gradient(to left, transparent 0%, rgba(255,255,255,0.95) 100%), url('${getProjectImage(award.project)}')`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center'
+                          }}
+                        />
+                        {/* Dark mode */}
+                        <div
+                          className="absolute inset-y-0 right-0 w-1/2 pointer-events-none opacity-30 hidden dark:block"
+                          style={{
+                            backgroundImage: `linear-gradient(to left, transparent 0%, rgba(31,41,55,0.95) 100%), url('${getProjectImage(award.project)}')`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center'
+                          }}
+                        />
+                      </>
+                    ) : (
+                      <div className={`absolute inset-y-0 right-0 w-1/2 pointer-events-none ${
+                        award.award === "최우수"
+                          ? "bg-gradient-to-l from-amber-50/40 to-transparent dark:from-amber-900/10"
+                          : award.award === "우수"
+                          ? "bg-gradient-to-l from-slate-50/40 to-transparent dark:from-slate-900/10"
+                          : "bg-gradient-to-l from-gray-50/40 to-transparent dark:from-gray-700/10"
+                      }`} />
+                    )}
+
+                    {/* Content */}
+                    <div className="relative z-10">
                       <div className="flex gap-2 mb-3">
                         <span className={`inline-block text-xs font-bold px-3 py-1 rounded-full ${
                           award.award === "최우수"
@@ -158,7 +204,7 @@ const Career = () => {
                       </div>
                       <h4 className="text-gray-900 dark:text-white">{renderProjectName(award.project)}</h4>
                     </div>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">{award.event}</p>
+                    <p className="relative z-10 text-sm text-gray-600 dark:text-gray-400">{award.event}</p>
                   </div>
                 </div>
               ))}
