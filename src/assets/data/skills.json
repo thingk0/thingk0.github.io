@@ -5,83 +5,23 @@
       "skills": [
         {
           "name": "Java",
-          "level": "Advanced",
+          "level": 3.5,
           "icon": "/assets/icons/languages/java.svg"
         },
         {
           "name": "Kotlin",
-          "level": "Advanced",
+          "level": 2.0,
           "icon": "/assets/icons/languages/kotlin.svg"
         },
         {
           "name": "Python",
-          "level": "Intermediate",
+          "level": 3.0,
           "icon": "/assets/icons/languages/python.svg"
         },
         {
           "name": "JavaScript",
-          "level": "Intermediate",
+          "level": 2.0,
           "icon": "/assets/icons/languages/javascript.svg"
-        },
-        {
-          "name": "HTML",
-          "level": "Advanced",
-          "icon": "/assets/icons/languages/html.svg"
-        },
-        {
-          "name": "CSS",
-          "level": "Intermediate",
-          "icon": "/assets/icons/languages/css.svg"
-        }
-      ]
-    },
-    {
-      "name": "Backend & Frameworks",
-      "skills": [
-        {
-          "name": "Spring",
-          "level": "Advanced",
-          "icon": "/assets/icons/frameworks/spring.svg"
-        },
-        {
-          "name": "FastAPI",
-          "level": "Intermediate",
-          "icon": "/assets/icons/frameworks/fastapi.svg"
-        },
-        {
-          "name": "Nest.js",
-          "level": "Intermediate",
-          "icon": "/assets/icons/frameworks/nest.svg"
-        }
-      ]
-    },
-    {
-      "name": "Databases",
-      "skills": [
-        {
-          "name": "PostgreSQL",
-          "level": "Advanced",
-          "icon": "/assets/icons/databases/postgresql.svg"
-        },
-        {
-          "name": "MySQL",
-          "level": "Intermediate",
-          "icon": "/assets/icons/databases/mysql.svg"
-        },
-        {
-          "name": "Redis",
-          "level": "Intermediate",
-          "icon": "/assets/icons/databases/redis.svg"
-        },
-        {
-          "name": "Elasticsearch",
-          "level": "Intermediate",
-          "icon": "/assets/icons/databases/elasticsearch.svg"
-        },
-        {
-          "name": "Milvus",
-          "level": "Intermediate",
-          "icon": "/assets/icons/databases/milvus.svg"
         }
       ]
     },
@@ -90,13 +30,68 @@
       "skills": [
         {
           "name": "React",
-          "level": "Advanced",
+          "level": 2.5,
           "icon": "/assets/icons/frontend/react.svg"
         },
         {
           "name": "Tailwind CSS",
-          "level": "Advanced",
+          "level": 2.0,
           "icon": "/assets/icons/frontend/tailwindcss.svg"
+        },
+        {
+          "name": "HTML",
+          "level": 2.5,
+          "icon": "/assets/icons/languages/html.svg"
+        },
+        {
+          "name": "CSS",
+          "level": 2.5,
+          "icon": "/assets/icons/languages/css.svg"
+        }
+      ]
+    },
+    {
+      "name": "Backend",
+      "skills": [
+        {
+          "name": "Spring",
+          "level": 3.5,
+          "icon": "/assets/icons/frameworks/spring.svg"
+        },
+        {
+          "name": "FastAPI",
+          "level": 2.5,
+          "icon": "/assets/icons/frameworks/fastapi.svg"
+        }
+      ]
+    },
+    {
+      "name": "Databases",
+      "skills": [
+        {
+          "name": "PostgreSQL",
+          "level": 2.5,
+          "icon": "/assets/icons/databases/postgresql.svg"
+        },
+        {
+          "name": "MySQL",
+          "level": 2.5,
+          "icon": "/assets/icons/databases/mysql.svg"
+        },
+        {
+          "name": "Redis",
+          "level": 2.0,
+          "icon": "/assets/icons/databases/redis.svg"
+        },
+        {
+          "name": "Elasticsearch",
+          "level": 2.0,
+          "icon": "/assets/icons/databases/elasticsearch.svg"
+        },
+        {
+          "name": "Milvus",
+          "level": 2.0,
+          "icon": "/assets/icons/databases/milvus.svg"
         }
       ]
     },
@@ -105,22 +100,22 @@
       "skills": [
         {
           "name": "Docker",
-          "level": "Advanced",
+          "level": 2.5,
           "icon": "/assets/icons/devops/docker.svg"
         },
         {
           "name": "Kafka",
-          "level": "Intermediate",
+          "level": 2.0,
           "icon": "/assets/icons/devops/kafka.svg"
         },
         {
           "name": "Nginx",
-          "level": "Intermediate",
+          "level": 2.5,
           "icon": "/assets/icons/devops/nginx.svg"
         },
         {
           "name": "Jenkins",
-          "level": "Intermediate",
+          "level": 1.5,
           "icon": "/assets/icons/devops/jenkins.svg"
         }
       ]
@@ -130,27 +125,27 @@
       "skills": [
         {
           "name": "Git",
-          "level": "Advanced",
+          "level": 3.5,
           "icon": "/assets/icons/dev-tools/git.svg"
         },
         {
           "name": "IntelliJ IDEA",
-          "level": "Advanced",
+          "level": 3.5,
           "icon": "/assets/icons/dev-tools/intellij.svg"
         }
       ]
     },
     {
-      "name": "AI & ML",
+      "name": "AI",
       "skills": [
         {
           "name": "LangChain",
-          "level": "Intermediate",
+          "level": 3.0,
           "icon": "/assets/icons/ai-ml/langchain.svg"
         },
         {
           "name": "OpenAI",
-          "level": "Intermediate",
+          "level": 2.5,
           "icon": "/assets/icons/ai-ml/openai.svg"
         }
       ]
@@ -160,22 +155,22 @@
       "skills": [
         {
           "name": "Jira",
-          "level": "Intermediate",
+          "level": 2.5,
           "icon": "/assets/icons/collaboration/jira.svg"
         },
         {
           "name": "Confluence",
-          "level": "Intermediate",
+          "level": 2.5,
           "icon": "/assets/icons/collaboration/confluence.svg"
         },
         {
           "name": "Notion",
-          "level": "Advanced",
+          "level": 3.0,
           "icon": "/assets/icons/collaboration/notion.svg"
         },
         {
           "name": "Slack",
-          "level": "Intermediate",
+          "level": 2.0,
           "icon": "/assets/icons/collaboration/slack.svg"
         }
       ]
@@ -185,12 +180,12 @@
       "skills": [
         {
           "name": "Figma",
-          "level": "Advanced",
+          "level": 4.0,
           "icon": "/assets/icons/design/figma.svg"
         },
         {
           "name": "Adobe Premiere Pro",
-          "level": "Advanced",
+          "level": 3.5,
           "icon": "/assets/icons/design/premierpro.svg"
         }
       ]

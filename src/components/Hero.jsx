@@ -13,31 +13,31 @@ const Hero = () => {
           <p className="text-gray-900 dark:text-white font-semibold text-xl sm:text-2xl md:text-3xl mb-4 text-center">{profileData.greeting}</p>
 
           {/* Main Title */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-gray-900 dark:text-white mb-4 text-center break-words">
-            저는{' '}
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-4 text-center break-words leading-relaxed">
+            <span className="text-gray-900 dark:text-white">저는</span>{' '}
             <span className="relative inline-block">
-              <span className="text-gray-900 dark:text-white">
+              <span className="text-transparent select-none">
                 {profileData.name}
               </span>
-              <span className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent animate-gradientFadeIn">
+              <span className="absolute top-0 left-0 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent animate-gradientFadeIn">
                 {profileData.name}
               </span>
-            </span>
-            입니다
+            </span>{' '}
+            <span className="text-gray-900 dark:text-white">입니다</span>
           </h1>
 
           {/* Subtitle */}
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-600 dark:text-gray-300 mb-12 sm:mb-16 md:mb-20 text-center break-words">
-            BE &{' '}
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-12 sm:mb-16 md:mb-20 text-center break-words leading-relaxed">
+            <span className="text-gray-600 dark:text-gray-300">BE &</span>{' '}
             <span className="relative inline-block">
-              <span className="text-gray-600 dark:text-gray-300">
+              <span className="text-transparent select-none">
                 AI Agent
               </span>
-              <span className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent animate-gradientFadeIn-delay">
+              <span className="absolute top-0 left-0 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent animate-gradientFadeIn-delay">
                 AI Agent
               </span>
-            </span>
-            {' '}Engineer
+            </span>{' '}
+            <span className="text-gray-600 dark:text-gray-300">Engineer</span>
           </h2>
 
           {/* Quote */}

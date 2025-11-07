@@ -5,30 +5,41 @@ import SectionTitle from './ui/SectionTitle'
 const Skills = () => {
   const [activeTab, setActiveTab] = useState(skillsData.categories[0].name)
 
-  // Convert skill level to dot count (1-5)
-  const getLevelDots = (level) => {
-    const levelMap = {
-      'Advanced': 4,
-      'Intermediate': 3,
-      'Beginner': 1,
-    }
-    return levelMap[level] || 3
-  }
-
-  // Proficiency indicator component
+  // Proficiency indicator component with half-fill support
   const ProficiencyDots = ({ level }) => {
-    const filledDots = getLevelDots(level)
     const totalDots = 5
+
+    const getDotFillState = (index) => {
+      const dotPosition = index + 1
+      if (level >= dotPosition) {
+        return 'full'
+      } else if (level >= dotPosition - 0.5) {
+        return 'half'
+      }
+      return 'empty'
+    }
 
     return (
       <div className="flex gap-1">
-        {Array.from({ length: totalDots }).map((_, index) => (
-          <div
-            key={index}
-            className={`w-2 h-2 rounded-full transition-colors ${index < filledDots ? 'bg-blue-500' : 'bg-gray-300 dark:bg-gray-600'
-              }`}
-          />
-        ))}
+        {Array.from({ length: totalDots }).map((_, index) => {
+          const fillState = getDotFillState(index)
+          
+          return (
+            <div key={index} className="relative w-2 h-2">
+              {fillState === 'full' && (
+                <div className="w-full h-full rounded-full bg-blue-500 transition-colors" />
+              )}
+              {fillState === 'half' && (
+                <div className="w-full h-full rounded-full bg-gray-300 dark:bg-gray-600 overflow-hidden">
+                  <div className="w-1/2 h-full bg-blue-500" />
+                </div>
+              )}
+              {fillState === 'empty' && (
+                <div className="w-full h-full rounded-full bg-gray-300 dark:bg-gray-600 transition-colors" />
+              )}
+            </div>
+          )
+        })}
       </div>
     )
   }

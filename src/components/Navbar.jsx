@@ -19,7 +19,6 @@ const Navbar = () => {
     { name: '경력', href: '#career' },
     { name: '스킬', href: '#skills' },
     { name: '프로젝트', href: '#projects' },
-    { name: '연락처', href: '#contact' },
   ]
 
   return (
