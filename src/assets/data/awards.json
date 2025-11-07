@@ -1,0 +1,20 @@
+[
+  {
+    "date": "2024.05",
+    "event": "SSAFY 기업연계 프로젝트",
+    "project": "스마트 팩토리 플랫폼 '스마토링(Smartoring)'",
+    "award": "우수"
+  },
+  {
+    "date": "2024.03",
+    "event": "SSAFY 도메인 특화 프로젝트",
+    "project": "사회공헌 핀테크 플랫폼 '이음페이(IEUM-Pay)'",
+    "award": "최우수"
+  },
+  {
+    "date": "2024.02",
+    "event": "SSAFY 자기주도 공통 프로젝트",
+    "project": "SNS 기반 콘텐츠 공유 플랫폼 '마이브러리(MyBrary)'",
+    "award": "최우수"
+  }
+]

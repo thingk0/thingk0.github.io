@@ -1,6 +1,5 @@
 [
   {
-    "id": "chit",
     "title": "CHIT",
     "tagline": "스트리머와 시청자를 매끄럽게 연결하는 실시간 참여 플랫폼",
     "period": "2025.01 ~ 현재 (배포 준비 중)",
@@ -55,11 +54,9 @@
     "tags": ["Spring Boot", "SSE", "Virtual Thread", "EhCache", "Hibernate", "Cloudflare", "Nginx", "HTTPS"],
     "github": null,
     "demo": null,
-    "date": "2025-01",
-    "featured": false
+    "date": "2025-01"
   },
   {
-    "id": "smartoring",
     "title": "스마토링 (Smartoring)",
     "period": "2024.04 ~ 2024.05",
     "description": "스마트 팩토리 물류 기기 통합 제어 및 모니터링 시스템",
@@ -70,11 +67,9 @@
     "github": null,
     "demo": null,
     "date": "2024-05",
-    "featured": true,
     "award": "우수"
   },
   {
-    "id": "ieumpay",
     "title": "이음페이 (IEUM-Pay)",
     "period": "2024.02 ~ 2024.03",
     "description": "사용자 잔돈 자동 기부 핀테크 서비스",
@@ -85,11 +80,9 @@
     "github": null,
     "demo": null,
     "date": "2024-03",
-    "featured": true,
     "award": "최우수"
   },
   {
-    "id": "mybrary",
     "title": "마이브러리 (MyBrary)",
     "period": "2024.01 ~ 2024.02",
     "description": "다양한 콘텐츠 출판 가능한 SNS 플랫폼",
@@ -100,7 +93,6 @@
     "github": null,
     "demo": null,
     "date": "2024-02",
-    "featured": true,
     "award": "최우수"
   }
 ]

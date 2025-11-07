@@ -1,5 +1,5 @@
 import React from 'react'
-import Badge from './ui/Badge'
+import Badge from '../ui/Badge'
 
 export default function ProjectDetailModal({ project, onClose, onBack }) {
   if (!project) return null

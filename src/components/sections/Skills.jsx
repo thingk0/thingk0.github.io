@@ -1,9 +1,38 @@
-import React, { useState } from 'react'
-import skillsData from '../assets/data/skills.json'
-import SectionTitle from './ui/SectionTitle'
+import React, { useState, useRef, useEffect } from 'react'
+import skillsData from '../../assets/data/skills.json'
+import SectionTitle from '../ui/SectionTitle'
 
 const Skills = () => {
   const [activeTab, setActiveTab] = useState(skillsData.categories[0].name)
+  const [showLeftGradient, setShowLeftGradient] = useState(false)
+  const [showRightGradient, setShowRightGradient] = useState(true)
+  const scrollContainerRef = useRef(null)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const container = scrollContainerRef.current
+      if (!container) return
+
+      const { scrollLeft, scrollWidth, clientWidth } = container
+      
+      // Show left gradient if scrolled right
+      setShowLeftGradient(scrollLeft > 10)
+      
+      // Show right gradient if not at the end
+      setShowRightGradient(scrollLeft < scrollWidth - clientWidth - 10)
+    }
+
+    const container = scrollContainerRef.current
+    if (container) {
+      handleScroll() // Initial check
+      container.addEventListener('scroll', handleScroll)
+      window.addEventListener('resize', handleScroll)
+      return () => {
+        container.removeEventListener('scroll', handleScroll)
+        window.removeEventListener('resize', handleScroll)
+      }
+    }
+  }, [])
 
   // Proficiency indicator component with half-fill support
   const ProficiencyDots = ({ level }) => {
@@ -76,19 +105,31 @@ const Skills = () => {
         <SectionTitle title="Skills" />
 
         {/* Tab Navigation */}
-        <div className="mb-16 flex gap-2 overflow-x-auto">
-          {skillsData.categories.map((category) => (
-            <button
-              key={category.name}
-              onClick={() => setActiveTab(category.name)}
-              className={`px-4 py-2 font-medium text-sm whitespace-nowrap transition-colors duration-200 ${activeTab === category.name
-                ? 'text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400 pb-2'
-                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-                }`}
-            >
-              {category.name}
-            </button>
-          ))}
+        <div className="relative mb-8">
+          {/* Left gradient overlay */}
+          {showLeftGradient && (
+            <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white dark:from-gray-900 to-transparent pointer-events-none z-10 transition-opacity duration-300"></div>
+          )}
+          
+          {/* Right gradient overlay */}
+          {showRightGradient && (
+            <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white dark:from-gray-900 to-transparent pointer-events-none z-10 transition-opacity duration-300"></div>
+          )}
+          
+          <div ref={scrollContainerRef} className="flex gap-2 overflow-x-auto scrollbar-hide">
+            {skillsData.categories.map((category) => (
+              <button
+                key={category.name}
+                onClick={() => setActiveTab(category.name)}
+                className={`px-4 py-2 font-medium text-sm whitespace-nowrap transition-colors duration-200 ${activeTab === category.name
+                  ? 'text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400 pb-2'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                  }`}
+              >
+                {category.name}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Skills Grid */}

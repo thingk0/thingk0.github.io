@@ -1,5 +1,5 @@
 import React from 'react'
-import Badge from './ui/Badge'
+import Badge from '../ui/Badge'
 
 const ProjectListModal = ({ projects, onProjectClick, onClose }) => {
   return (

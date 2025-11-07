@@ -1,10 +1,10 @@
 import React, { useState, useMemo } from 'react'
-import projectsData from '../assets/data/projects.json'
-import Modal from './ui/Modal'
-import ProjectDetailModal from './ProjectDetailModal'
-import ProjectListModal from './ProjectListModal'
-import SectionTitle from './ui/SectionTitle'
-import Badge from './ui/Badge'
+import projectsData from '../../assets/data/projects.json'
+import Modal from '../ui/Modal'
+import ProjectDetailModal from '../modals/ProjectDetailModal'
+import ProjectListModal from '../modals/ProjectListModal'
+import SectionTitle from '../ui/SectionTitle'
+import Badge from '../ui/Badge'
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null)

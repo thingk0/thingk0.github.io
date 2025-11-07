@@ -1,5 +1,5 @@
 import React from 'react'
-import profileData from '../assets/data/profile.json'
+import profileData from '../../assets/data/profile.json'
 
 const Hero = () => {
   return (

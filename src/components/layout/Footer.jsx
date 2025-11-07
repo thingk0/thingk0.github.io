@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import profileData from '../assets/data/profile.json'
+import profileData from '../../assets/data/profile.json'
 
 const Footer = () => {
   const [showToast, setShowToast] = useState(false)
@@ -98,7 +98,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="border-t border-gray-800 pt-8 text-center">
           <p className="text-gray-400 text-sm font-semibold">
-            © {new Date().getFullYear()} Thingk0. All Rights Reserved.
+            © {new Date().getFullYear()} {profileData.nickname}. All Rights Reserved.
           </p>
           <p className="text-gray-500 text-xs mt-3 max-w-2xl mx-auto">
             이 포트폴리오의 모든 디자인, 코드, 콘텐츠는 저작권법에 의해 보호됩니다.

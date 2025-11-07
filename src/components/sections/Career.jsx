@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import profileData from '../assets/data/profile.json'
-import skillsData from '../assets/data/skills.json'
-import SectionTitle from './ui/SectionTitle'
-import Badge from './ui/Badge'
-import SkillBadge from './ui/SkillBadge'
+import profileData from '../../assets/data/profile.json'
+import skillsData from '../../assets/data/skills.json'
+import SectionTitle from '../ui/SectionTitle'
+import Badge from '../ui/Badge'
+import SkillBadge from '../ui/SkillBadge'
 
 const Career = () => {
   const [activePositions, setActivePositions] = useState(

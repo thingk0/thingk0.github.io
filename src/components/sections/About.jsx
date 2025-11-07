@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
-import profileData from '../assets/data/profile.json'
-import projectsData from '../assets/data/projects.json'
-import skillsData from '../assets/data/skills.json'
-import SectionTitle from './ui/SectionTitle'
+import profileData from '../../assets/data/profile.json'
+import projectsData from '../../assets/data/projects.json'
+import skillsData from '../../assets/data/skills.json'
+import SectionTitle from '../ui/SectionTitle'
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false)

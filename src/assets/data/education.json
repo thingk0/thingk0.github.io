@@ -1,0 +1,20 @@
+[
+  {
+    "type": "부트캠프",
+    "institution": "삼성 청년 소프트웨어 아카데미 (SSAFY 10th)",
+    "period": "2023.07 ~ 2024.06",
+    "duration": "1년",
+    "logo": "/assets/logos/ssafy.webp",
+    "description": "삼성전자가 주관하는 청년 소프트웨어 인재 양성 교육 과정으로, 1년간 총 1,600시간 동안 팀원들과 협력하며 프로젝트를 주도적으로 기획·구현하고, 실무에 가까운 개발 경험을 쌓았습니다. 진로 상담과 취업 지원 프로그램을 적극적으로 활용해 커리어 목표를 구체적으로 설계할 수 있었습니다.",
+    "url": "https://www.ssafy.com/ksp/jsp/swp/swpMain.jsp"
+  },
+  {
+    "type": "학사",
+    "institution": "명지대학교",
+    "major": "정보통신공학",
+    "period": "2017.03 ~ 2023.08",
+    "logo": "/assets/logos/mju.webp",
+    "description": "정보통신공학을 전공하여 통신과 컴퓨팅 기술들을 학습하였으며, 다양한 이론과 실습을 통해 실무 능력을 배양했습니다.",
+    "url": "https://ince.mju.ac.kr/ince/index.do"
+  }
+]

@@ -1,17 +1,13 @@
 {
   "name": "고명성",
   "nickname": "thingk0",
-  "title": "AI Agent Engineer",
   "greeting": "안녕하세요 👋",
-  "heroTitle": "BE & AI Agent Engineer",
   "heroQuote": "AI는 우리가 가진 모든 직업을 대체하지는 않을 것이다. 그러나 AI를 가진 사람들이 모든 직업을 대체할 것이다.",
   "heroQuoteAuthor": "앤드류 응",
   "heroDescription": "도전·노력·기회·성장을 가치로 삼는 개발자입니다",
   "email": "audtjd9080@naver.com",
   "github": "https://github.com/thingk0",
   "instagram": "https://instagram.com/thingk0",
-  "profileImage": "/assets/photo/my_portrait_01.webp",
-  "resume": "/resume.pdf",
   "bio": {
     "intro": "저는 도전·노력·기회·성장을 가치로 삼는 개발자입니다."
   },
@@ -117,9 +113,5 @@
       "name": "SQLD (SQL 개발자)",
       "date": "2023.12.15"
     }
-  ],
-  "social": {
-    "github": "https://github.com/thingk0",
-    "email": "audtjd9080@naver.com"
-  }
+  ]
 }
