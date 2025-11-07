@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react'
+import Badge from './ui/Badge'
 
 const ProjectListModal = ({ projects, onProjectClick, onClose }) => {
   const [selectedFilter, setSelectedFilter] = useState('all')
@@ -97,17 +98,14 @@ const ProjectListModal = ({ projects, onProjectClick, onClose }) => {
                   {/* Tags */}
                   <div className="flex flex-wrap gap-2">
                     {project.tags.slice(0, 3).map((tag, idx) => (
-                      <span
-                        key={idx}
-                        className="px-2 py-1 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium"
-                      >
+                      <Badge key={idx} variant="gray" size="sm" className="px-2 py-1">
                         {tag}
-                      </span>
+                      </Badge>
                     ))}
                     {project.tags.length > 3 && (
-                      <span className="px-2 py-1 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium">
+                      <Badge variant="gray" size="sm" className="px-2 py-1">
                         +{project.tags.length - 3}
-                      </span>
+                      </Badge>
                     )}
                   </div>
                 </div>

@@ -4,6 +4,7 @@ import Modal from './ui/Modal'
 import ProjectDetailModal from './ProjectDetailModal'
 import ProjectListModal from './ProjectListModal'
 import SectionTitle from './ui/SectionTitle'
+import Badge from './ui/Badge'
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null)
@@ -78,12 +79,9 @@ const Projects = () => {
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, idx) => (
-                    <span
-                      key={idx}
-                      className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium"
-                    >
+                    <Badge key={idx} variant="gray" size="md">
                       {tag}
-                    </span>
+                    </Badge>
                   ))}
                 </div>
 

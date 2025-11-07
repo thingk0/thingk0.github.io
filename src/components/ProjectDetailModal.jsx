@@ -1,4 +1,5 @@
 import React from 'react'
+import Badge from './ui/Badge'
 
 export default function ProjectDetailModal({ project, onClose }) {
   if (!project) return null
@@ -124,12 +125,9 @@ export default function ProjectDetailModal({ project, onClose }) {
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">담당 역할</h3>
             <div className="flex flex-wrap gap-2">
               {project.role.map((role, idx) => (
-                <span
-                  key={idx}
-                  className="px-4 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full text-sm font-medium"
-                >
+                <Badge key={idx} variant="blue" size="md" className="px-4 py-2">
                   {role}
-                </span>
+                </Badge>
               ))}
             </div>
           </section>
@@ -163,12 +161,9 @@ export default function ProjectDetailModal({ project, onClose }) {
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">기술 스택</h3>
             <div className="flex flex-wrap gap-2">
               {project.tags.map((tag, idx) => (
-                <span
-                  key={idx}
-                  className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-                >
+                <Badge key={idx} variant="gray" size="md" className="hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
                   {tag}
-                </span>
+                </Badge>
               ))}
             </div>
           </section>

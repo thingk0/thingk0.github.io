@@ -9,7 +9,8 @@ const Badge = ({
 }) => {
   const variantStyles = {
     indigo: 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30',
-    gray: 'text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-800',
+    blue: 'text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30',
+    gray: 'text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700',
     amber: 'text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/30',
     slate: 'text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/30',
     green: 'text-green-700 dark:text-green-300 bg-green-50 dark:bg-green-900/20'
