@@ -104,6 +104,11 @@
           "icon": "/assets/icons/devops/docker.svg"
         },
         {
+          "name": "AWS",
+          "level": 2.0,
+          "icon": "/assets/icons/devops/aws.svg"
+        },
+        {
           "name": "Kafka",
           "level": 2.0,
           "icon": "/assets/icons/devops/kafka.svg"

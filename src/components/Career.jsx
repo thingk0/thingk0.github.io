@@ -1,9 +1,21 @@
 import React from 'react'
 import profileData from '../assets/data/profile.json'
+import skillsData from '../assets/data/skills.json'
 import SectionTitle from './ui/SectionTitle'
 import Badge from './ui/Badge'
+import SkillBadge from './ui/SkillBadge'
 
 const Career = () => {
+  // Helper function to get skill icon from skills.json
+  const getSkillIcon = (skillName) => {
+    for (const category of skillsData.categories) {
+      const skill = category.skills.find(s => 
+        s.name.toLowerCase() === skillName.toLowerCase()
+      )
+      if (skill) return skill.icon
+    }
+    return null
+  }
   const renderProjectName = (projectText) => {
     const match = projectText.match(/^(.*?)[''](.+?)[''](.*)$/)
     if (match) {
@@ -42,9 +54,9 @@ const Career = () => {
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">경력</h3>
           <div className="space-y-8">
             {profileData.career?.map((job, jobIndex) => (
-              <div key={jobIndex} className="relative pl-8 border-l-2 border-indigo-500">
+              <div key={jobIndex} className="relative pl-8 border-l-2 border-blue-500">
                 {/* Timeline dot */}
-                <div className="absolute left-0 top-0 w-4 h-4 bg-indigo-500 rounded-full transform -translate-x-2.5 hover:scale-110 transition-transform duration-200"></div>
+                <div className="absolute left-0 top-0 w-4 h-4 bg-blue-500 rounded-full transform -translate-x-2.5 hover:scale-110 transition-transform duration-200"></div>
 
                 {/* Job content */}
                 <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300">
@@ -62,7 +74,7 @@ const Career = () => {
                         <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{job.department}</p>
                       </div>
                     </div>
-                    <Badge variant="indigo" size="md">
+                    <Badge variant="blue" size="md">
                       {job.period}
                     </Badge>
                   </div>
@@ -101,9 +113,13 @@ const Career = () => {
                       <h5 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">기술 스택</h5>
                       <div className="flex flex-wrap gap-2">
                         {job.techStack.map((tech, idx) => (
-                          <Badge key={idx} variant="indigo" size="sm">
-                            {tech}
-                          </Badge>
+                          <SkillBadge 
+                            key={idx} 
+                            name={tech}
+                            icon={getSkillIcon(tech)}
+                            size="sm"
+                            variant="gray"
+                          />
                         ))}
                       </div>
                     </div>
