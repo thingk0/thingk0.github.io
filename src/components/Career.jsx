@@ -61,40 +61,6 @@ const Career = () => {
           </div>
         </div>
 
-        {/* Awards Section */}
-        {profileData.awards?.length > 0 && (
-          <div className="mb-16">
-            <h3 className="text-2xl font-bold text-gray-900 mb-8">수상</h3>
-            <div className="space-y-8">
-              {profileData.awards.map((award, index) => (
-                <div key={index} className="relative pl-8 border-l-2 border-amber-400">
-                  {/* Timeline dot */}
-                  <div className="absolute left-0 top-0 w-4 h-4 bg-amber-400 rounded-full transform -translate-x-2.5 hover:scale-110 transition-transform duration-200"></div>
-
-                  {/* Award content */}
-                  <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-3">
-                      <div className="flex items-center gap-3">
-                        <span className="text-2xl">🏆</span>
-                        <div>
-                          <span className="inline-block text-xs font-bold text-amber-600 bg-amber-50 px-3 py-1 rounded-full mb-2">
-                            {award.award}
-                          </span>
-                          <h4 className="font-semibold text-gray-900">{award.project}</h4>
-                        </div>
-                      </div>
-                      <span className="text-sm font-semibold text-gray-600 bg-gray-50 px-3 py-1 rounded-full w-fit">
-                        {award.date}
-                      </span>
-                    </div>
-                    <p className="text-sm text-gray-600 pl-11">{award.event}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
         {/* Education Section */}
         {profileData.education?.length > 0 && (
           <div className="mb-16">
@@ -145,6 +111,43 @@ const Career = () => {
                       {edu.description}
                     </p>
                   )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Awards Section */}
+        {profileData.awards?.length > 0 && (
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold text-gray-900 mb-8">수상</h3>
+            <div className="space-y-8">
+              {profileData.awards.map((award, index) => (
+                <div key={index} className="relative pl-8 border-l-2 border-amber-400">
+                  {/* Timeline dot */}
+                  <div className="absolute left-0 top-0 w-4 h-4 bg-amber-400 rounded-full transform -translate-x-2.5 hover:scale-110 transition-transform duration-200"></div>
+
+                  {/* Award content */}
+                  <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-3">
+                      <div>
+                        <span className={`inline-block text-xs font-bold px-3 py-1 rounded-full mb-2 ${
+                          award.award === "최우수"
+                            ? "text-amber-600 bg-amber-50"
+                            : award.award === "우수"
+                            ? "text-slate-600 bg-slate-50"
+                            : "text-gray-600 bg-gray-50"
+                        }`}>
+                          {award.award}
+                        </span>
+                        <h4 className="font-semibold text-gray-900">{award.project}</h4>
+                      </div>
+                      <span className="text-sm font-semibold text-gray-600 bg-gray-50 px-3 py-1 rounded-full w-fit">
+                        {award.date}
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-600">{award.event}</p>
                   </div>
                 </div>
               ))}
