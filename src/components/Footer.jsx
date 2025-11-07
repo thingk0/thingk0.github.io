@@ -1,12 +1,11 @@
 import React from 'react'
+import profileData from '../assets/data/profile.json'
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear()
-
   const socialLinks = [
-    { name: 'GitHub', url: 'https://github.com/yourusername', icon: '💼' },
-    { name: 'LinkedIn', url: 'https://linkedin.com/in/yourusername', icon: '🔗' },
-    { name: 'Email', url: 'mailto:your.email@example.com', icon: '📧' },
+    { name: 'GitHub', url: 'https://github.com/thingk0', icon: '💼' },
+    { name: 'Instagram', url: 'https://instagram.com/thingk0', icon: '📷' },
+    { name: 'Email', url: 'mailto:audtjd9080@naver.com', icon: '📧' },
   ]
 
   return (
@@ -19,7 +18,7 @@ const Footer = () => {
               Portfolio
             </h3>
             <p className="text-gray-400">
-              열정적인 개발자의 포트폴리오입니다.
+              {profileData.heroDescription}
             </p>
           </div>
 
@@ -68,13 +67,6 @@ const Footer = () => {
               ))}
             </div>
           </div>
-        </div>
-
-        {/* Copyright */}
-        <div className="border-t border-gray-800 pt-8 text-center">
-          <p className="text-gray-400">
-            &copy; {currentYear} Portfolio. Made with React & Tailwind CSS.
-          </p>
         </div>
       </div>
     </footer>

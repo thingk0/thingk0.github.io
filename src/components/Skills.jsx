@@ -58,7 +58,7 @@ const Skills = () => {
   const activeCategory = skillsData.categories.find(cat => cat.name === activeTab)
 
   return (
-    <section id="skills" className="py-20 bg-gray-50">
+    <section id="skills" className="py-20 bg-white">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-16">

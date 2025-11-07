@@ -1,21 +1,39 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import projectsData from '../assets/data/projects.json'
 import Modal from './ui/Modal'
 import ProjectDetailModal from './ProjectDetailModal'
+import ProjectListModal from './ProjectListModal'
 
 const Projects = () => {
-  const projects = projectsData
   const [selectedProject, setSelectedProject] = useState(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false)
+  const [isListModalOpen, setIsListModalOpen] = useState(false)
+
+  // Get 3 most recent projects
+  const recentProjects = useMemo(() => {
+    return [...projectsData]
+      .sort((a, b) => b.date.localeCompare(a.date))
+      .slice(0, 3)
+  }, [])
 
   const handleProjectClick = (project) => {
     setSelectedProject(project)
-    setIsModalOpen(true)
+    setIsDetailModalOpen(true)
   }
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false)
-    setTimeout(() => setSelectedProject(null), 300) // 애니메이션 완료 후 상태 초기화
+  const handleCloseDetailModal = () => {
+    setIsDetailModalOpen(false)
+    setTimeout(() => setSelectedProject(null), 300)
+  }
+
+  const handleProjectClickFromList = (project) => {
+    setSelectedProject(project)
+    setIsListModalOpen(false)
+    setIsDetailModalOpen(true)
+  }
+
+  const handleViewAllProjects = () => {
+    setIsListModalOpen(true)
   }
 
   return (
@@ -23,13 +41,14 @@ const Projects = () => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Projects</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Recent Projects</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto"></div>
+          <p className="text-gray-600 mt-4">Check out my latest work</p>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+        {/* Recent Projects Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {recentProjects.map((project, index) => (
             <div
               key={index}
               className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
@@ -101,11 +120,33 @@ const Projects = () => {
             </div>
           ))}
         </div>
+
+        {/* View All Projects Button */}
+        <div className="flex justify-center">
+          <button
+            onClick={handleViewAllProjects}
+            className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200 flex items-center gap-2"
+          >
+            View All Projects
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </button>
+        </div>
       </div>
 
+      {/* Project List Modal */}
+      <Modal isOpen={isListModalOpen} onClose={() => setIsListModalOpen(false)}>
+        <ProjectListModal
+          projects={projectsData}
+          onProjectClick={handleProjectClickFromList}
+          onClose={() => setIsListModalOpen(false)}
+        />
+      </Modal>
+
       {/* Project Detail Modal */}
-      <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-        <ProjectDetailModal project={selectedProject} onClose={handleCloseModal} />
+      <Modal isOpen={isDetailModalOpen} onClose={handleCloseDetailModal}>
+        <ProjectDetailModal project={selectedProject} onClose={handleCloseDetailModal} />
       </Modal>
     </section>
   )

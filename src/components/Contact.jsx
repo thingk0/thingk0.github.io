@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import profileData from '../assets/data/profile.json'
 
 const Contact = () => {
+  const [showToast, setShowToast] = useState(false)
+
+  const handleEmailCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(profileData.email)
+      setShowToast(true)
+      setTimeout(() => setShowToast(false), 2500)
+    } catch (err) {
+      console.error('Failed to copy email:', err)
+    }
+  }
+
   const contactLinks = [
     {
       icon: '📧',
@@ -15,20 +27,20 @@ const Contact = () => {
       value: profileData.github.replace('https://', ''),
       link: profileData.github,
     },
-    profileData.linkedin && {
-      icon: '🔗',
-      label: 'LinkedIn',
-      value: profileData.linkedin.replace('https://', ''),
-      link: profileData.linkedin,
+    profileData.instagram && {
+      icon: '📷',
+      label: 'Instagram',
+      value: profileData.instagram.replace('https://', ''),
+      link: profileData.instagram,
     },
   ].filter(Boolean)
 
   return (
-    <section id="contact" className="py-32 bg-white">
+    <section id="contact" className="py-12 md:py-20 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Centered Title */}
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Let's Connect
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
@@ -38,42 +50,42 @@ const Contact = () => {
         </div>
 
         {/* Contact Links */}
-        <div className="space-y-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-3">
           {contactLinks.map((contact, index) => (
-            <a
-              key={index}
-              href={contact.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block group"
-            >
-              <div className="flex items-center gap-4 p-4 md:p-6 rounded-lg hover:bg-gray-50 transition-colors duration-200">
-                <span className="text-3xl flex-shrink-0">{contact.icon}</span>
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-sm font-medium text-gray-500 mb-1">
-                    {contact.label}
-                  </h3>
-                  <p className="text-lg text-gray-900 group-hover:text-blue-600 group-hover:underline decoration-2 underline-offset-2 transition-colors duration-200 break-all">
-                    {contact.value}
-                  </p>
-                </div>
-                <svg className="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </div>
-            </a>
+            contact.label === 'Email' ? (
+              <button
+                key={index}
+                onClick={handleEmailCopy}
+                className="inline-flex items-center gap-2 px-5 py-3 bg-gray-50 border border-gray-200 rounded-full hover:bg-gray-100 hover:border-gray-300 hover:shadow-md transition-all duration-200 group cursor-pointer"
+              >
+                <span className="text-xl">{contact.icon}</span>
+                <span className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                  {contact.label}
+                </span>
+              </button>
+            ) : (
+              <a
+                key={index}
+                href={contact.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3 bg-gray-50 border border-gray-200 rounded-full hover:bg-gray-100 hover:border-gray-300 hover:shadow-md transition-all duration-200 group"
+              >
+                <span className="text-xl">{contact.icon}</span>
+                <span className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                  {contact.label}
+                </span>
+              </a>
+            )
           ))}
         </div>
 
-        {/* CTA Button */}
-        <div className="text-center pt-8 border-t border-gray-200">
-          <a
-            href={`mailto:${profileData.email}`}
-            className="inline-block px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
-          >
-            이메일 보내기
-          </a>
-        </div>
+        {/* Toast Message */}
+        {showToast && (
+          <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-full shadow-lg animate-fadeInUp z-50">
+            <span className="font-medium">이메일이 복사되었습니다!</span>
+          </div>
+        )}
       </div>
     </section>
   )
