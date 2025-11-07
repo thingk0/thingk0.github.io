@@ -10,36 +10,44 @@ const Hero = () => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="animate-fadeInUp">
           {/* Greeting */}
-          <p className="text-blue-600 font-semibold text-lg mb-4">{profileData.greeting}</p>
+          <p className="text-gray-900 dark:text-white font-semibold text-2xl mb-4 text-left">{profileData.greeting}</p>
 
           {/* Main Title */}
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6">
+          <h1 className="text-7xl md:text-9xl font-bold text-gray-900 dark:text-white mb-4 text-left">
             저는{' '}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              {profileData.heroTitle}
+            <span className="relative inline-block">
+              <span className="text-gray-900 dark:text-white">
+                {profileData.name}
+              </span>
+              <span className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent animate-gradientFadeIn">
+                {profileData.name}
+              </span>
             </span>
             입니다
           </h1>
+          
+          {/* Subtitle */}
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-600 dark:text-gray-300 mb-20 text-right">
+            BE &{' '}
+            <span className="relative inline-block">
+              <span className="text-gray-600 dark:text-gray-300">
+                AI Agent
+              </span>
+              <span className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent animate-gradientFadeIn-delay">
+                AI Agent
+              </span>
+            </span>
+            {' '}Engineer
+          </h2>
 
-          {/* Description */}
-          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto">
-            {profileData.heroDescription}
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="#projects"
-              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200"
-            >
-              프로젝트 보기
-            </a>
-            <a
-              href="#contact"
-              className="px-8 py-4 bg-white text-gray-700 border-2 border-gray-200 rounded-lg font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-200"
-            >
-              연락하기
-            </a>
+          {/* Quote */}
+          <div className="mt-8 mb-16 max-w-5xl mx-auto text-center">
+            <p className="text-base md:text-lg text-gray-500 dark:text-gray-400 italic mb-2 whitespace-nowrap overflow-hidden text-ellipsis px-4">
+              "{profileData.heroQuote}"
+            </p>
+            <p className="text-sm md:text-base text-gray-400 dark:text-gray-500">
+              – {profileData.heroQuoteAuthor}
+            </p>
           </div>
         </div>
 
