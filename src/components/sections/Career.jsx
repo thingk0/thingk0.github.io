@@ -41,13 +41,13 @@ const Career = () => {
 
   const getProjectImage = (projectName) => {
     if (projectName.includes('스마토링') || projectName.includes('Smartoring')) {
-      return '/assets/images/projects/smartoring.webp'
+      return '/assets/images/projects/smartoring/thumbnail.webp'
     }
     if (projectName.includes('이음페이') || projectName.includes('IEUM-Pay')) {
-      return '/assets/images/projects/ieumpay.webp'
+      return '/assets/images/projects/ieumpay/thumbnail.webp'
     }
     if (projectName.includes('마이브러리') || projectName.includes('MyBrary')) {
-      return '/assets/images/projects/mybrary.webp'
+      return '/assets/images/projects/mybrary/thumbnail.webp'
     }
     return null
   }

@@ -94,51 +94,56 @@ export default function ProjectDetailModal({ project, onClose, onBack }) {
       </div>
 
       {/* 메인 컨텐츠 */}
-      <div className="p-6 md:p-8 max-w-4xl mx-auto">
+      <div className="p-6 md:p-8 max-w-4xl mx-auto space-y-6">
         {/* 개요 */}
         {project.longDescription && (
-          <section className="mb-12">
+          <section className="p-6 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700">
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base">
               {project.longDescription}
             </p>
           </section>
         )}
 
-        {/* 기술 스택 - 상단 배치 */}
-        {project.tags && project.tags.length > 0 && (
-          <section className="mb-12">
-            <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-4">Tech Stack</h3>
-            <div className="flex flex-wrap gap-2">
-              {project.tags.map((tag, idx) => (
-                <SkillBadge
-                  key={idx}
-                  name={tag}
-                  icon={getSkillIcon(tag)}
-                  size="md"
-                  variant="gray"
-                />
-              ))}
-            </div>
-          </section>
-        )}
+        {/* 기술 스택 & 담당 역할 */}
+        {((project.tags && project.tags.length > 0) || (project.role && project.role.length > 0)) && (
+          <section className="p-6 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700 space-y-6">
+            {/* 기술 스택 */}
+            {project.tags && project.tags.length > 0 && (
+              <div>
+                <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-4">Tech Stack</h3>
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag, idx) => (
+                    <SkillBadge
+                      key={idx}
+                      name={tag}
+                      icon={getSkillIcon(tag)}
+                      size="md"
+                      variant="gray"
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
 
-        {/* 담당 역할 */}
-        {project.role && project.role.length > 0 && (
-          <section className="mb-12">
-            <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-4">Role</h3>
-            <div className="flex flex-wrap gap-2">
-              {project.role.map((role, idx) => (
-                <span key={idx} className="px-3 py-1.5 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 text-sm font-medium rounded-md">
-                  {role}
-                </span>
-              ))}
-            </div>
+            {/* 담당 역할 */}
+            {project.role && project.role.length > 0 && (
+              <div>
+                <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-4">Role</h3>
+                <div className="flex flex-wrap gap-2">
+                  {project.role.map((role, idx) => (
+                    <span key={idx} className="px-3 py-1.5 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 text-sm font-medium rounded-md">
+                      {role}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
           </section>
         )}
 
         {/* 배경 & 문제 */}
         {(project.background || project.persona) && (
-          <section className="mb-12 space-y-6">
+          <section className="p-6 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700 space-y-6">
             <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Background</h3>
             
             {project.background?.purpose && (
@@ -170,7 +175,7 @@ export default function ProjectDetailModal({ project, onClose, onBack }) {
 
         {/* 차별화 포인트 */}
         {project.uniquePoints && project.uniquePoints.length > 0 && (
-          <section className="mb-12">
+          <section className="p-6 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700">
             <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-4">Key Features</h3>
             <ul className="space-y-4">
               {project.uniquePoints.map((point, idx) => (
@@ -187,7 +192,7 @@ export default function ProjectDetailModal({ project, onClose, onBack }) {
 
         {/* 기술적 성과 */}
         {project.highlights && project.highlights.length > 0 && (
-          <section className="mb-12">
+          <section className="p-6 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700">
             <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-4">Technical Highlights</h3>
             <div className="space-y-6">
               {project.highlights.map((highlight, idx) => (
@@ -206,8 +211,8 @@ export default function ProjectDetailModal({ project, onClose, onBack }) {
 
         {/* 요약 */}
         {project.summary && (
-          <section className="mb-12 border-t border-gray-200 dark:border-gray-700 pt-8">
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed italic">
+          <section className="p-6 bg-blue-50 dark:bg-blue-900/10 rounded-lg border border-blue-200 dark:border-blue-800">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed italic">
               {project.summary}
             </p>
           </section>
