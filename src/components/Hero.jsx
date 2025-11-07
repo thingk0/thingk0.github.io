@@ -10,10 +10,10 @@ const Hero = () => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="animate-fadeInUp">
           {/* Greeting */}
-          <p className="text-gray-900 dark:text-white font-semibold text-2xl mb-4 text-left">{profileData.greeting}</p>
+          <p className="text-gray-900 dark:text-white font-semibold text-lg sm:text-xl md:text-2xl mb-4 text-left">{profileData.greeting}</p>
 
           {/* Main Title */}
-          <h1 className="text-7xl md:text-9xl font-bold text-gray-900 dark:text-white mb-4 text-left">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-gray-900 dark:text-white mb-4 text-left break-words">
             저는{' '}
             <span className="relative inline-block">
               <span className="text-gray-900 dark:text-white">
@@ -25,9 +25,9 @@ const Hero = () => {
             </span>
             입니다
           </h1>
-          
+
           {/* Subtitle */}
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-600 dark:text-gray-300 mb-20 text-right">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-600 dark:text-gray-300 mb-12 sm:mb-16 md:mb-20 text-right break-words">
             BE &{' '}
             <span className="relative inline-block">
               <span className="text-gray-600 dark:text-gray-300">
@@ -42,10 +42,10 @@ const Hero = () => {
 
           {/* Quote */}
           <div className="mt-8 mb-16 max-w-5xl mx-auto text-center">
-            <p className="text-base md:text-lg text-gray-500 dark:text-gray-400 italic mb-2 whitespace-nowrap overflow-hidden text-ellipsis px-4">
+            <p className="text-sm sm:text-base md:text-lg text-gray-500 dark:text-gray-400 italic mb-2 px-4 break-words">
               "{profileData.heroQuote}"
             </p>
-            <p className="text-sm md:text-base text-gray-400 dark:text-gray-500">
+            <p className="text-xs sm:text-sm md:text-base text-gray-400 dark:text-gray-500">
               – {profileData.heroQuoteAuthor}
             </p>
           </div>
