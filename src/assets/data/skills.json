@@ -137,6 +137,11 @@
           "name": "IntelliJ IDEA",
           "level": 3.5,
           "icon": "/assets/icons/dev-tools/intellij.svg"
+        },
+        {
+          "name": "Tableau",
+          "level": 2.5,
+          "icon": "/assets/icons/dev-tools/tableau.svg"
         }
       ]
     },

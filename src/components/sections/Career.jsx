@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
-import profileData from '../../assets/data/profile.json'
+import careerData from '../../assets/data/career.json'
+import educationData from '../../assets/data/education.json'
+import awardsData from '../../assets/data/awards.json'
+import certificationsData from '../../assets/data/certifications.json'
 import skillsData from '../../assets/data/skills.json'
 import SectionTitle from '../ui/SectionTitle'
 import Badge from '../ui/Badge'
@@ -7,7 +10,7 @@ import SkillBadge from '../ui/SkillBadge'
 
 const Career = () => {
   const [activePositions, setActivePositions] = useState(
-    profileData.career?.map((job) => {
+    careerData?.map((job) => {
       // Find the latest position (current position)
       return job.positions?.length > 0 ? job.positions.length - 1 : 0
     }) || []
@@ -59,7 +62,7 @@ const Career = () => {
         <div className="mb-16">
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">경력</h3>
           <div className="space-y-8">
-            {profileData.career?.map((job, jobIndex) => (
+            {careerData?.map((job, jobIndex) => (
               <div key={jobIndex} className="relative pl-8 border-l-2 border-blue-500">
                 {/* Timeline dot */}
                 <div className="absolute left-0 top-0 w-4 h-4 bg-blue-500 rounded-full transform -translate-x-2.5 hover:scale-110 transition-transform duration-200"></div>
@@ -173,11 +176,11 @@ const Career = () => {
         </div>
 
         {/* Education Section */}
-        {profileData.education?.length > 0 && (
+        {educationData?.length > 0 && (
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">학력</h3>
             <div className="space-y-8">
-              {profileData.education.map((edu, index) => (
+              {educationData.map((edu, index) => (
                 <div
                   key={index}
                   className="relative pl-8 border-l-2 border-indigo-500"
@@ -253,11 +256,11 @@ const Career = () => {
         )}
 
         {/* Awards Section */}
-        {profileData.awards?.length > 0 && (
+        {awardsData?.length > 0 && (
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">수상</h3>
             <div className="space-y-8">
-              {profileData.awards.map((award, index) => (
+              {awardsData.map((award, index) => (
                 <div key={index} className="relative pl-8 border-l-2 border-amber-400">
                   {/* Timeline dot */}
                   <div className="absolute left-0 top-0 w-4 h-4 bg-amber-400 rounded-full transform -translate-x-2.5 hover:scale-110 transition-transform duration-200"></div>
@@ -325,11 +328,11 @@ const Career = () => {
         )}
 
         {/* Certifications Section */}
-        {profileData.certifications?.length > 0 && (
+        {certificationsData?.length > 0 && (
           <div>
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">자격증</h3>
             <div className="flex flex-wrap gap-3">
-              {profileData.certifications.map((cert, index) => (
+              {certificationsData.map((cert, index) => (
                 <div
                   key={index}
                   className="inline-flex items-center gap-2 px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full"

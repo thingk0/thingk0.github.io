@@ -9,15 +9,16 @@
         "title": "백엔드 엔지니어",
         "period": "2024.07 ~ 2025.07",
         "responsibilities": [
-          "백엔드 API 설계 및 데이터베이스 최적화",
-          "Spring 기반 RESTful API 개발",
-          "데이터베이스 스키마 설계 및 쿼리 최적화",
-          "팀 내 기술 리뷰 및 코드 품질 개선"
+          "태블로(Tableau) 확장 기능 제공을 위한 DataLens API 서버 개발 및 유지보수 담당",
+          "사용자 IP 기반 접근 제어, 태블로 라이센스 동기화 등 보안 및 관리 기능 구현",
+          "사용자 및 시스템 로그 적재·분석을 위한 API 개발로 운영 이슈 사전 대응 강화",
+          "대용량 데이터 처리 및 쿼리 성능 최적화로 응답 속도 향상"
         ],
         "techStack": [
           "Java",
           "Spring",
           "PostgreSQL",
+          "Tableau",
           "AWS"
         ],
         "achievements": [

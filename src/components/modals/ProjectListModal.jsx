@@ -1,7 +1,20 @@
 import React from 'react'
 import Badge from '../ui/Badge'
+import SkillBadge from '../ui/SkillBadge'
+import skillsData from '../../assets/data/skills.json'
 
 const ProjectListModal = ({ projects, onProjectClick, onClose }) => {
+  // Helper function to get skill icon from skills.json
+  const getSkillIcon = (skillName) => {
+    for (const category of skillsData.categories) {
+      const skill = category.skills.find(s => 
+        s.name.toLowerCase() === skillName.toLowerCase()
+      )
+      if (skill) return skill.icon
+    }
+    return null
+  }
+
   return (
     <div className="w-full bg-white dark:bg-gray-800 rounded-xl overflow-hidden flex flex-col max-h-[90vh]">
       {/* Sticky Header */}
@@ -54,9 +67,13 @@ const ProjectListModal = ({ projects, onProjectClick, onClose }) => {
                   {/* Tags */}
                   <div className="flex flex-wrap gap-2">
                     {project.tags.slice(0, 3).map((tag, idx) => (
-                      <Badge key={idx} variant="gray" size="sm" className="px-2 py-1">
-                        {tag}
-                      </Badge>
+                      <SkillBadge
+                        key={idx}
+                        name={tag}
+                        icon={getSkillIcon(tag)}
+                        size="sm"
+                        variant="gray"
+                      />
                     ))}
                     {project.tags.length > 3 && (
                       <Badge variant="gray" size="sm" className="px-2 py-1">

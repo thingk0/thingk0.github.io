@@ -1,167 +1,201 @@
 import React from 'react'
 import Badge from '../ui/Badge'
+import SkillBadge from '../ui/SkillBadge'
+import skillsData from '../../assets/data/skills.json'
 
 export default function ProjectDetailModal({ project, onClose, onBack }) {
+  // Helper function to get skill icon from skills.json
+  const getSkillIcon = (skillName) => {
+    for (const category of skillsData.categories) {
+      const skill = category.skills.find(s => 
+        s.name.toLowerCase() === skillName.toLowerCase()
+      )
+      if (skill) return skill.icon
+    }
+    return null
+  }
+
   if (!project) return null
 
   return (
     <div className="w-full">
       {/* 헤더 */}
-      <div className="sticky top-0 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-6 md:p-8 flex items-start justify-between">
-        <div className="flex-1">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-            {project.title}
-          </h2>
-          {project.tagline && (
-            <p className="text-lg text-gray-600 dark:text-gray-400 mb-3">{project.tagline}</p>
-          )}
-          <div className="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400">
-            {project.period && (
-              <span className="flex items-center gap-1">
-                📅 {project.period}
-              </span>
+      <div className="sticky top-0 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-6 md:p-8 z-10">
+        <div className="flex items-start justify-between">
+          <div className="flex-1">
+            <div className="flex items-center gap-3 mb-2">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
+                {project.title}
+              </h2>
+              {project.award && (
+                <span className="px-3 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 text-sm font-semibold rounded-full">
+                  🏆 {project.award}
+                </span>
+              )}
+            </div>
+            {project.tagline && (
+              <p className="text-base text-gray-600 dark:text-gray-400 mb-3">{project.tagline}</p>
             )}
-            {project.teamSize && (
-              <span className="flex items-center gap-1">
-                👥 {project.teamSize}
-              </span>
-            )}
+            <div className="flex flex-wrap gap-3 text-sm text-gray-500 dark:text-gray-500">
+              {project.period && <span>📅 {project.period}</span>}
+              {project.teamSize && <span>👥 {project.teamSize}</span>}
+            </div>
           </div>
-        </div>
-        {/* 버튼들 */}
-        <div className="flex items-center gap-2 ml-4">
-          {/* 뒤로가기 버튼 */}
-          {onBack && (
+          {/* 버튼들 */}
+          <div className="flex items-center gap-2 ml-4">
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                aria-label="View on GitHub"
+              >
+                <svg className="w-6 h-6 text-gray-600 dark:text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                  <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                </svg>
+              </a>
+            )}
+            {project.demo && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                aria-label="View Demo"
+              >
+                <svg className="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            )}
+            {onBack && (
+              <button
+                onClick={onBack}
+                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                aria-label="Back to list"
+              >
+                <svg className="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+              </button>
+            )}
             <button
-              onClick={onBack}
+              onClick={onClose}
               className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
-              aria-label="Back to list"
+              aria-label="Close modal"
             >
               <svg className="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-          )}
-          {/* 닫기 버튼 */}
-          <button
-            onClick={onClose}
-            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
-            aria-label="Close modal"
-          >
-            <svg className="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+          </div>
         </div>
       </div>
 
       {/* 메인 컨텐츠 */}
-      <div className="p-6 md:p-8 space-y-8">
-        {/* 긴 설명 */}
+      <div className="p-6 md:p-8 max-w-4xl mx-auto">
+        {/* 개요 */}
         {project.longDescription && (
-          <section>
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">개요</h3>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{project.longDescription}</p>
+          <section className="mb-12">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base">
+              {project.longDescription}
+            </p>
+          </section>
+        )}
+
+        {/* 기술 스택 - 상단 배치 */}
+        {project.tags && project.tags.length > 0 && (
+          <section className="mb-12">
+            <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-4">Tech Stack</h3>
+            <div className="flex flex-wrap gap-2">
+              {project.tags.map((tag, idx) => (
+                <SkillBadge
+                  key={idx}
+                  name={tag}
+                  icon={getSkillIcon(tag)}
+                  size="md"
+                  variant="gray"
+                />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* 담당 역할 */}
+        {project.role && project.role.length > 0 && (
+          <section className="mb-12">
+            <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-4">Role</h3>
+            <div className="flex flex-wrap gap-2">
+              {project.role.map((role, idx) => (
+                <span key={idx} className="px-3 py-1.5 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 text-sm font-medium rounded-md">
+                  {role}
+                </span>
+              ))}
+            </div>
           </section>
         )}
 
         {/* 배경 & 문제 */}
-        {project.background && (
-          <section>
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">배경</h3>
-            <div className="space-y-3">
-              {project.background.purpose && (
-                <div>
-                  <h4 className="font-medium text-gray-900 dark:text-white mb-1">목적</h4>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    {project.background.purpose}
-                  </p>
-                </div>
-              )}
-              {project.background.problem && (
-                <div>
-                  <h4 className="font-medium text-gray-900 dark:text-white mb-1">해결하려던 문제</h4>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    {project.background.problem}
-                  </p>
-                </div>
-              )}
-            </div>
-          </section>
-        )}
+        {(project.background || project.persona) && (
+          <section className="mb-12 space-y-6">
+            <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Background</h3>
+            
+            {project.background?.purpose && (
+              <div>
+                <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-2">목적</h4>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {project.background.purpose}
+                </p>
+              </div>
+            )}
+            
+            {project.background?.problem && (
+              <div>
+                <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-2">해결하려던 문제</h4>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {project.background.problem}
+                </p>
+              </div>
+            )}
 
-        {/* 사용자 페르소나 */}
-        {project.persona && (
-          <section>
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">사용자</h3>
-            <div className="space-y-3">
-              {project.persona.target && (
-                <div>
-                  <h4 className="font-medium text-gray-900 dark:text-white mb-1">타겟</h4>
-                  <p className="text-gray-600 dark:text-gray-400">{project.persona.target}</p>
-                </div>
-              )}
-              {project.persona.painPoint && (
-                <div>
-                  <h4 className="font-medium text-gray-900 dark:text-white mb-1">문제점</h4>
-                  <p className="text-gray-600 dark:text-gray-400">{project.persona.painPoint}</p>
-                </div>
-              )}
-              {project.persona.needs && (
-                <div>
-                  <h4 className="font-medium text-gray-900 dark:text-white mb-1">필요한 기능</h4>
-                  <p className="text-gray-600 dark:text-gray-400">{project.persona.needs}</p>
-                </div>
-              )}
-            </div>
+            {project.persona?.target && (
+              <div>
+                <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-2">타겟 사용자</h4>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{project.persona.target}</p>
+              </div>
+            )}
           </section>
         )}
 
         {/* 차별화 포인트 */}
         {project.uniquePoints && project.uniquePoints.length > 0 && (
-          <section>
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">차별화 포인트</h3>
-            <ul className="space-y-3">
+          <section className="mb-12">
+            <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-4">Key Features</h3>
+            <ul className="space-y-4">
               {project.uniquePoints.map((point, idx) => (
                 <li key={idx} className="flex gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm font-semibold">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 flex items-center justify-center text-xs font-semibold mt-0.5">
                     {idx + 1}
                   </span>
-                  <p className="text-gray-600 dark:text-gray-400 pt-0.5">{point}</p>
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{point}</p>
                 </li>
               ))}
             </ul>
           </section>
         )}
 
-        {/* 담당 역할 */}
-        {project.role && project.role.length > 0 && (
-          <section>
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">담당 역할</h3>
-            <div className="flex flex-wrap gap-2">
-              {project.role.map((role, idx) => (
-                <Badge key={idx} variant="blue" size="md" className="px-4 py-2">
-                  {role}
-                </Badge>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* 기술 하이라이트 */}
+        {/* 기술적 성과 */}
         {project.highlights && project.highlights.length > 0 && (
-          <section>
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">기술적 성과</h3>
-            <div className="space-y-4">
+          <section className="mb-12">
+            <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-4">Technical Highlights</h3>
+            <div className="space-y-6">
               {project.highlights.map((highlight, idx) => (
-                <div
-                  key={idx}
-                  className="border-l-4 border-blue-500 pl-4 py-2"
-                >
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
+                <div key={idx}>
+                  <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
                     {highlight.title}
                   </h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                     {highlight.description}
                   </p>
                 </div>
@@ -170,40 +204,12 @@ export default function ProjectDetailModal({ project, onClose, onBack }) {
           </section>
         )}
 
-        {/* 기술 스택 */}
-        {project.tags && project.tags.length > 0 && (
-          <section>
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">기술 스택</h3>
-            <div className="flex flex-wrap gap-2">
-              {project.tags.map((tag, idx) => (
-                <Badge key={idx} variant="gray" size="md" className="hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
-                  {tag}
-                </Badge>
-              ))}
-            </div>
-          </section>
-        )}
-
         {/* 요약 */}
         {project.summary && (
-          <section className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 md:p-6">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">요약</h3>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm md:text-base">
+          <section className="mb-12 border-t border-gray-200 dark:border-gray-700 pt-8">
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed italic">
               {project.summary}
             </p>
-          </section>
-        )}
-
-        {/* 수상 경력 */}
-        {project.award && (
-          <section className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4 md:p-6">
-            <div className="flex items-center gap-3">
-              <span className="text-2xl">🏆</span>
-              <div>
-                <h4 className="font-semibold text-amber-900 dark:text-amber-200">수상</h4>
-                <p className="text-amber-700 dark:text-amber-300">{project.award}</p>
-              </div>
-            </div>
           </section>
         )}
 
