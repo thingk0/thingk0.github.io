@@ -1,26 +1,7 @@
-import React, { useState, useMemo } from 'react'
+import React from 'react'
 import Badge from './ui/Badge'
 
 const ProjectListModal = ({ projects, onProjectClick, onClose }) => {
-  const [selectedFilter, setSelectedFilter] = useState('all')
-
-  // Extract all unique tags
-  const allTags = useMemo(() => {
-    const tags = new Set()
-    projects.forEach(project => {
-      project.tags.forEach(tag => tags.add(tag))
-    })
-    return ['all', ...Array.from(tags).sort()]
-  }, [projects])
-
-  // Filter projects based on selected tag
-  const filteredProjects = useMemo(() => {
-    if (selectedFilter === 'all') {
-      return projects
-    }
-    return projects.filter(project => project.tags.includes(selectedFilter))
-  }, [projects, selectedFilter])
-
   return (
     <div className="w-full bg-white dark:bg-gray-800 rounded-xl overflow-hidden flex flex-col max-h-[90vh]">
       {/* Sticky Header */}
@@ -39,36 +20,11 @@ const ProjectListModal = ({ projects, onProjectClick, onClose }) => {
         </button>
       </div>
 
-      {/* Sticky Filter Section */}
-      <div className="sticky top-[88px] bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-4 md:p-6 z-10">
-        {/* Filter Tags */}
-        <div className="flex flex-wrap justify-center gap-3 mb-4">
-          {allTags.map(tag => (
-            <button
-              key={tag}
-              onClick={() => setSelectedFilter(tag)}
-              className={`px-4 py-2 rounded-full font-medium transition-all duration-200 ${
-                selectedFilter === tag
-                  ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md'
-                  : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
-              }`}
-            >
-              {tag === 'all' ? 'All' : tag}
-            </button>
-          ))}
-        </div>
-
-        {/* Project Count */}
-        <div className="text-center text-sm text-gray-600 dark:text-gray-400">
-          {filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'}
-        </div>
-      </div>
-
       {/* Scrollable Projects Grid */}
       <div className="flex-1 overflow-y-auto p-6 md:p-8">
-        {filteredProjects.length > 0 ? (
+        {projects.length > 0 ? (
           <div className="grid md:grid-cols-2 gap-6">
-            {filteredProjects.map((project, index) => (
+            {projects.map((project, index) => (
               <div
                 key={index}
                 className="group bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer border border-gray-200 dark:border-gray-600"

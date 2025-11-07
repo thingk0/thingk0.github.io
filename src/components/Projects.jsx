@@ -10,6 +10,7 @@ const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null)
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false)
   const [isListModalOpen, setIsListModalOpen] = useState(false)
+  const [fromList, setFromList] = useState(false)
 
   // Get 3 most recent projects
   const recentProjects = useMemo(() => {
@@ -20,18 +21,26 @@ const Projects = () => {
 
   const handleProjectClick = (project) => {
     setSelectedProject(project)
+    setFromList(false)
     setIsDetailModalOpen(true)
   }
 
   const handleCloseDetailModal = () => {
     setIsDetailModalOpen(false)
+    setFromList(false)
     setTimeout(() => setSelectedProject(null), 300)
   }
 
   const handleProjectClickFromList = (project) => {
     setSelectedProject(project)
+    setFromList(true)
     setIsListModalOpen(false)
     setIsDetailModalOpen(true)
+  }
+
+  const handleBackToList = () => {
+    setIsDetailModalOpen(false)
+    setIsListModalOpen(true)
   }
 
   const handleViewAllProjects = () => {
@@ -144,7 +153,11 @@ const Projects = () => {
 
       {/* Project Detail Modal */}
       <Modal isOpen={isDetailModalOpen} onClose={handleCloseDetailModal}>
-        <ProjectDetailModal project={selectedProject} onClose={handleCloseDetailModal} />
+        <ProjectDetailModal 
+          project={selectedProject} 
+          onClose={handleCloseDetailModal}
+          onBack={fromList ? handleBackToList : null}
+        />
       </Modal>
     </section>
   )
