@@ -1,5 +1,6 @@
 import React from 'react'
 import profileData from '../assets/data/profile.json'
+import SectionTitle from './ui/SectionTitle'
 
 const Career = () => {
   const renderProjectName = (projectText) => {
@@ -33,12 +34,7 @@ const Career = () => {
     <section id="career" className="py-20 bg-white dark:bg-gray-900">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Career
-          </h2>
-          <div className="w-20 h-1 bg-indigo-500 mx-auto"></div>
-        </div>
+        <SectionTitle title="Career" />
 
         {/* Work Experience Section */}
         <div className="mb-16">
@@ -71,7 +67,7 @@ const Career = () => {
                   </div>
 
                   {/* Positions */}
-                  <div className="space-y-3">
+                  <div className="space-y-3 mb-6 pb-6 border-b border-gray-200 dark:border-gray-700">
                     {job.positions?.map((position, posIndex) => (
                       <div
                         key={posIndex}
@@ -82,6 +78,55 @@ const Career = () => {
                       </div>
                     ))}
                   </div>
+
+                  {/* Responsibilities */}
+                  {job.responsibilities?.length > 0 && (
+                    <div className="mb-6">
+                      <h5 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">담당 업무</h5>
+                      <ul className="space-y-2">
+                        {job.responsibilities.map((responsibility, idx) => (
+                          <li key={idx} className="flex gap-3 text-sm text-gray-600 dark:text-gray-400">
+                            <span className="flex-shrink-0 mt-1.5">•</span>
+                            <span>{responsibility}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Tech Stack */}
+                  {job.techStack?.length > 0 && (
+                    <div className="mb-6">
+                      <h5 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">기술 스택</h5>
+                      <div className="flex flex-wrap gap-2">
+                        {job.techStack.map((tech, idx) => (
+                          <span
+                            key={idx}
+                            className="px-3 py-1 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 rounded-full text-xs font-medium"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Achievements */}
+                  {job.achievements?.length > 0 && (
+                    <div>
+                      <h5 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">주요 성과</h5>
+                      <div className="space-y-2">
+                        {job.achievements.map((achievement, idx) => (
+                          <div
+                            key={idx}
+                            className="p-3 bg-green-50 dark:bg-green-900/20 border-l-3 border-green-500 text-sm text-gray-700 dark:text-green-300 rounded"
+                          >
+                            {achievement}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}

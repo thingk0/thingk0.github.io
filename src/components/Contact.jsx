@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import profileData from '../assets/data/profile.json'
+import SectionTitle from './ui/SectionTitle'
 
 const Contact = () => {
   const [showToast, setShowToast] = useState(false)
@@ -39,15 +40,13 @@ const Contact = () => {
     <section id="contact" className="py-12 md:py-20 bg-white dark:bg-gray-900">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Centered Title */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Let's Connect
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
-          <p className="text-xl text-gray-600 dark:text-gray-400">
-            새로운 기회나 협업 제안이 있으시다면 편하게 연락해주세요.
-          </p>
-        </div>
+        <SectionTitle
+          title="Let's Connect"
+          subtitle="새로운 기회나 협업 제안이 있으시다면 편하게 연락해주세요."
+          subtitleSize="xl"
+          dividerWidth="wide"
+          spacing="compact"
+        />
 
         {/* Contact Links */}
         <div className="flex flex-wrap justify-center gap-3">

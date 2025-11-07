@@ -2,6 +2,7 @@ import React from 'react'
 import profileData from '../assets/data/profile.json'
 import projectsData from '../assets/data/projects.json'
 import skillsData from '../assets/data/skills.json'
+import SectionTitle from './ui/SectionTitle'
 
 const About = () => {
   // 통계 데이터 계산
@@ -32,12 +33,7 @@ const About = () => {
     <section id="about" className="py-20 bg-white dark:bg-gray-900">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            About Me
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto"></div>
-        </div>
+        <SectionTitle title="About Me" />
 
         {/* Content */}
         <div className="grid md:grid-cols-2 gap-12 items-center">

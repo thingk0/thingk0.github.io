@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import skillsData from '../assets/data/skills.json'
+import SectionTitle from './ui/SectionTitle'
 
 const Skills = () => {
   const [activeTab, setActiveTab] = useState(skillsData.categories[0].name)
@@ -61,10 +62,7 @@ const Skills = () => {
     <section id="skills" className="py-20 bg-white dark:bg-gray-900">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">Skills</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto"></div>
-        </div>
+        <SectionTitle title="Skills" />
 
         {/* Tab Navigation */}
         <div className="mb-16 flex gap-2 overflow-x-auto">

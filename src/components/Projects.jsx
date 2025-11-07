@@ -3,6 +3,7 @@ import projectsData from '../assets/data/projects.json'
 import Modal from './ui/Modal'
 import ProjectDetailModal from './ProjectDetailModal'
 import ProjectListModal from './ProjectListModal'
+import SectionTitle from './ui/SectionTitle'
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null)
@@ -40,11 +41,10 @@ const Projects = () => {
     <section id="projects" className="py-20 bg-white dark:bg-gray-900">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">Recent Projects</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto"></div>
-          <p className="text-gray-600 dark:text-gray-400 mt-4">Check out my latest work</p>
-        </div>
+        <SectionTitle
+          title="Recent Projects"
+          subtitle="Check out my latest work"
+        />
 
         {/* Recent Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
