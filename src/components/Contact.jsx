@@ -36,15 +36,15 @@ const Contact = () => {
   ].filter(Boolean)
 
   return (
-    <section id="contact" className="py-12 md:py-20 bg-white">
+    <section id="contact" className="py-12 md:py-20 bg-white dark:bg-gray-900">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Centered Title */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             Let's Connect
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-gray-600 dark:text-gray-400">
             새로운 기회나 협업 제안이 있으시다면 편하게 연락해주세요.
           </p>
         </div>
@@ -56,10 +56,10 @@ const Contact = () => {
               <button
                 key={index}
                 onClick={handleEmailCopy}
-                className="inline-flex items-center gap-2 px-5 py-3 bg-gray-50 border border-gray-200 rounded-full hover:bg-gray-100 hover:border-gray-300 hover:shadow-md transition-all duration-200 group cursor-pointer"
+                className="inline-flex items-center gap-2 px-5 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-md transition-all duration-200 group cursor-pointer"
               >
                 <span className="text-xl">{contact.icon}</span>
-                <span className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                <span className="font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   {contact.label}
                 </span>
               </button>
@@ -69,10 +69,10 @@ const Contact = () => {
                 href={contact.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 bg-gray-50 border border-gray-200 rounded-full hover:bg-gray-100 hover:border-gray-300 hover:shadow-md transition-all duration-200 group"
+                className="inline-flex items-center gap-2 px-5 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-md transition-all duration-200 group"
               >
                 <span className="text-xl">{contact.icon}</span>
-                <span className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                <span className="font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   {contact.label}
                 </span>
               </a>

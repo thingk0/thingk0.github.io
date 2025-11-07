@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 pt-20"
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="animate-fadeInUp">
@@ -13,7 +13,7 @@ const Hero = () => {
           <p className="text-blue-600 font-semibold text-lg mb-4">{profileData.greeting}</p>
 
           {/* Main Title */}
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
+          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6">
             저는{' '}
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               {profileData.heroTitle}
@@ -22,7 +22,7 @@ const Hero = () => {
           </h1>
 
           {/* Description */}
-          <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto">
             {profileData.heroDescription}
           </p>
 

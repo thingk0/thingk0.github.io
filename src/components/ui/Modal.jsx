@@ -34,7 +34,7 @@ export default function Modal({ isOpen, onClose, children }) {
     >
       {/* 모달 본체 (내부 클릭 시 닫히지 않도록 stopPropagation) */}
       <div
-        className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white rounded-2xl shadow-2xl animate-fadeInUp"
+        className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white dark:bg-gray-800 rounded-2xl shadow-2xl animate-fadeInUp"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"

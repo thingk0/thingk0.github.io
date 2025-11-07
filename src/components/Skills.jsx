@@ -24,7 +24,7 @@ const Skills = () => {
         {Array.from({ length: totalDots }).map((_, index) => (
           <div
             key={index}
-            className={`w-2 h-2 rounded-full transition-colors ${index < filledDots ? 'bg-blue-500' : 'bg-gray-300'
+            className={`w-2 h-2 rounded-full transition-colors ${index < filledDots ? 'bg-blue-500' : 'bg-gray-300 dark:bg-gray-600'
               }`}
           />
         ))}
@@ -35,7 +35,7 @@ const Skills = () => {
   // Skill card component
   const SkillCard = ({ skill }) => {
     return (
-      <div className="flex flex-col items-center gap-3 p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 hover:-translate-y-1 cursor-pointer group">
+      <div className="flex flex-col items-center gap-3 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 hover:-translate-y-1 cursor-pointer group">
         {/* Icon */}
         <div className="w-16 h-16 flex items-center justify-center">
           <img
@@ -46,7 +46,7 @@ const Skills = () => {
         </div>
 
         {/* Name */}
-        <h4 className="text-sm font-semibold text-gray-900 text-center">{skill.name}</h4>
+        <h4 className="text-sm font-semibold text-gray-900 dark:text-white text-center">{skill.name}</h4>
 
         {/* Proficiency Dots */}
         <ProficiencyDots level={skill.level} />
@@ -58,11 +58,11 @@ const Skills = () => {
   const activeCategory = skillsData.categories.find(cat => cat.name === activeTab)
 
   return (
-    <section id="skills" className="py-20 bg-white">
+    <section id="skills" className="py-20 bg-white dark:bg-gray-900">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Skills</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">Skills</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto"></div>
         </div>
 
@@ -73,8 +73,8 @@ const Skills = () => {
               key={category.name}
               onClick={() => setActiveTab(category.name)}
               className={`px-4 py-2 font-medium text-sm whitespace-nowrap transition-colors duration-200 ${activeTab === category.name
-                ? 'text-blue-600 border-b-2 border-blue-600 pb-2'
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400 pb-2'
+                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                 }`}
             >
               {category.name}

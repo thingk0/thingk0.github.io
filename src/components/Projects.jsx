@@ -37,13 +37,13 @@ const Projects = () => {
   }
 
   return (
-    <section id="projects" className="py-20 bg-white">
+    <section id="projects" className="py-20 bg-white dark:bg-gray-900">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Recent Projects</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">Recent Projects</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto"></div>
-          <p className="text-gray-600 mt-4">Check out my latest work</p>
+          <p className="text-gray-600 dark:text-gray-400 mt-4">Check out my latest work</p>
         </div>
 
         {/* Recent Projects Grid */}
@@ -51,11 +51,11 @@ const Projects = () => {
           {recentProjects.map((project, index) => (
             <div
               key={index}
-              className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
+              className="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
               onClick={() => handleProjectClick(project)}
             >
               {/* Project Image */}
-              <div className="h-48 relative overflow-hidden bg-gray-100">
+              <div className="h-48 relative overflow-hidden bg-gray-100 dark:bg-gray-700">
                 {project.image ? (
                   <img
                     src={project.image}
@@ -72,15 +72,15 @@ const Projects = () => {
 
               {/* Project Info */}
               <div className="p-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">{project.title}</h3>
-                <p className="text-gray-600 mb-4 line-clamp-3">{project.description}</p>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">{project.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">{project.description}</p>
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, idx) => (
                     <span
                       key={idx}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium"
+                      className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium"
                     >
                       {tag}
                     </span>
