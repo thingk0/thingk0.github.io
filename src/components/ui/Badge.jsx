@@ -17,8 +17,8 @@ const Badge = ({
   }
 
   const sizeStyles = {
-    sm: 'text-xs',
-    md: 'text-sm'
+    sm: 'text-xs h-7',
+    md: 'text-sm h-8'
   }
 
   const borderStyle = withBorder 
@@ -27,7 +27,7 @@ const Badge = ({
 
   return (
     <span 
-      className={`inline-block px-3 py-1 rounded-full font-semibold ${variantStyles[variant]} ${sizeStyles[size]} ${borderStyle} ${className}`}
+      className={`inline-flex items-center px-3 py-1 rounded-full font-semibold ${variantStyles[variant]} ${sizeStyles[size]} ${borderStyle} ${className}`}
     >
       {children}
     </span>

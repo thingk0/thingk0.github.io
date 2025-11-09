@@ -14,12 +14,12 @@ const SkillBadge = ({
 
   const sizeStyles = {
     sm: {
-      container: 'px-2 py-1 gap-1.5',
+      container: 'h-7 px-2 py-1 gap-1',
       icon: 'w-4 h-4',
       text: 'text-xs'
     },
     md: {
-      container: 'px-3 py-1.5 gap-2',
+      container: 'h-8 px-3 py-1.5 gap-1.5',
       icon: 'w-5 h-5',
       text: 'text-sm'
     }
