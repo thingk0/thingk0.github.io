@@ -92,6 +92,11 @@
           "name": "Milvus",
           "level": 2.0,
           "icon": "/assets/icons/databases/milvus.svg"
+        },
+        {
+          "name": "Neo4j",
+          "level": 2.0,
+          "icon": "/assets/icons/databases/neo4j.svg"
         }
       ]
     },

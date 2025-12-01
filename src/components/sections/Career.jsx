@@ -21,7 +21,7 @@ const Career = () => {
   useEffect(() => {
     const observers = itemRefs.current.map((ref, index) => {
       if (!ref) return null
-      
+
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
@@ -30,7 +30,7 @@ const Career = () => {
         },
         { threshold: 0.1 }
       )
-      
+
       observer.observe(ref)
       return observer
     })
@@ -46,7 +46,7 @@ const Career = () => {
   // Helper function to get skill icon from skills.json
   const getSkillIcon = (skillName) => {
     for (const category of skillsData.categories) {
-      const skill = category.skills.find(s => 
+      const skill = category.skills.find(s =>
         s.name.toLowerCase() === skillName.toLowerCase()
       )
       if (skill) return skill.icon
@@ -91,12 +91,11 @@ const Career = () => {
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">경력</h3>
           <div className="space-y-8">
             {careerData?.map((job, jobIndex) => (
-              <div 
-                key={jobIndex} 
+              <div
+                key={jobIndex}
                 ref={setItemRef(jobIndex)}
-                className={`relative pl-8 border-l-2 border-blue-500 transition-all duration-700 ${
-                  visibleItems.has(jobIndex) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
+                className={`relative pl-8 border-l-2 border-blue-500 transition-all duration-700 ${visibleItems.has(jobIndex) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  }`}
               >
                 {/* Timeline dot */}
                 <div className="absolute left-0 top-0 w-4 h-4 bg-blue-500 rounded-full transform -translate-x-2.5 hover:scale-110 transition-transform duration-200"></div>
@@ -142,19 +141,17 @@ const Career = () => {
                             newActivePositions[jobIndex] = posIndex
                             setActivePositions(newActivePositions)
                           }}
-                          className={`px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 ${
-                            activePositions[jobIndex] === posIndex
-                              ? 'bg-blue-500 text-white shadow-md'
-                              : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
-                          }`}
+                          className={`px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 ${activePositions[jobIndex] === posIndex
+                            ? 'bg-blue-500 text-white shadow-md'
+                            : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                            }`}
                         >
                           <div className="text-left">
                             <div className="font-semibold">{position.title}</div>
-                            <div className={`text-xs mt-0.5 ${
-                              activePositions[jobIndex] === posIndex 
-                                ? 'text-blue-100' 
-                                : 'text-gray-500 dark:text-gray-400'
-                            }`}>
+                            <div className={`text-xs mt-0.5 ${activePositions[jobIndex] === posIndex
+                              ? 'text-blue-100'
+                              : 'text-gray-500 dark:text-gray-400'
+                              }`}>
                               {position.period}
                             </div>
                           </div>
@@ -182,10 +179,10 @@ const Career = () => {
                   {job.positions?.[activePositions[jobIndex]]?.techStack?.length > 0 && (
                     <div className="mb-6">
                       <h5 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">기술 스택</h5>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="grid grid-cols-[repeat(3,max-content)] sm:grid-cols-[repeat(4,max-content)] md:grid-cols-[repeat(6,max-content)] gap-2 justify-items-start">
                         {job.positions[activePositions[jobIndex]].techStack.map((tech, idx) => (
-                          <SkillBadge 
-                            key={idx} 
+                          <SkillBadge
+                            key={idx}
                             name={tech}
                             icon={getSkillIcon(tech)}
                             size="sm"
@@ -229,75 +226,74 @@ const Career = () => {
                   <div
                     key={index}
                     ref={setItemRef(itemIndex)}
-                    className={`relative pl-8 border-l-2 border-indigo-500 transition-all duration-700 ${
-                      visibleItems.has(itemIndex) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                    }`}
+                    className={`relative pl-8 border-l-2 border-indigo-500 transition-all duration-700 ${visibleItems.has(itemIndex) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                      }`}
                   >
-                  {/* Timeline dot */}
-                  <div className="absolute left-0 top-0 w-4 h-4 bg-indigo-500 rounded-full transform -translate-x-2.5 hover:scale-110 transition-transform duration-200"></div>
+                    {/* Timeline dot */}
+                    <div className="absolute left-0 top-0 w-4 h-4 bg-indigo-500 rounded-full transform -translate-x-2.5 hover:scale-110 transition-transform duration-200"></div>
 
-                  {/* Education content */}
-                  <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300">
-                    <div>
-                      <div className="flex items-center gap-2 mb-3">
-                        <Badge variant="indigo" size="sm">
-                          {edu.type}
-                        </Badge>
-                        <Badge variant="gray" size="sm">
-                          {edu.period}
-                        </Badge>
-                      </div>
-                      <div className="flex items-center gap-4">
-                        {edu.logo && (
-                          <img
-                            src={edu.logo}
-                            alt={`${edu.institution} 로고`}
-                            className="h-16 w-auto object-contain flex-shrink-0"
-                          />
-                        )}
-                        <div>
-                          <div className="flex items-center gap-2">
-                            <h4 className="text-lg font-bold text-gray-900 dark:text-white">{edu.institution}</h4>
-                            {edu.url && (
-                              <a
-                                href={edu.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex-shrink-0 text-gray-500 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors duration-200"
-                                title="바로가기"
-                              >
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  className="h-5 w-5"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                  strokeWidth={2}
+                    {/* Education content */}
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300">
+                      <div>
+                        <div className="flex items-center gap-2 mb-3">
+                          <Badge variant="indigo" size="sm">
+                            {edu.type}
+                          </Badge>
+                          <Badge variant="gray" size="sm">
+                            {edu.period}
+                          </Badge>
+                        </div>
+                        <div className="flex items-center gap-4">
+                          {edu.logo && (
+                            <img
+                              src={edu.logo}
+                              alt={`${edu.institution} 로고`}
+                              className="h-16 w-auto object-contain flex-shrink-0"
+                            />
+                          )}
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <h4 className="text-lg font-bold text-gray-900 dark:text-white">{edu.institution}</h4>
+                              {edu.url && (
+                                <a
+                                  href={edu.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="flex-shrink-0 text-gray-500 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors duration-200"
+                                  title="바로가기"
                                 >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                                  />
-                                </svg>
-                              </a>
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-5 w-5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth={2}
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                    />
+                                  </svg>
+                                </a>
+                              )}
+                            </div>
+                            {edu.major && (
+                              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                                전공: {edu.major} {edu.duration && `(${edu.duration})`}
+                              </p>
                             )}
                           </div>
-                          {edu.major && (
-                            <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                              전공: {edu.major} {edu.duration && `(${edu.duration})`}
-                            </p>
-                          )}
                         </div>
                       </div>
+                      {edu.description && (
+                        <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                          {edu.description}
+                        </p>
+                      )}
                     </div>
-                  {edu.description && (
-                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                      {edu.description}
-                    </p>
-                  )}
                   </div>
-                </div>
                 )
               })}
             </div>
@@ -312,73 +308,71 @@ const Career = () => {
               {awardsData.map((award, index) => {
                 const itemIndex = careerData.length + educationData.length + index
                 return (
-                  <div 
-                    key={index} 
+                  <div
+                    key={index}
                     ref={setItemRef(itemIndex)}
-                    className={`relative pl-8 border-l-2 border-amber-400 transition-all duration-700 ${
-                      visibleItems.has(itemIndex) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                    }`}
+                    className={`relative pl-8 border-l-2 border-amber-400 transition-all duration-700 ${visibleItems.has(itemIndex) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                      }`}
                   >
-                  {/* Timeline dot */}
-                  <div className="absolute left-0 top-0 w-4 h-4 bg-amber-400 rounded-full transform -translate-x-2.5 hover:scale-110 transition-transform duration-200"></div>
+                    {/* Timeline dot */}
+                    <div className="absolute left-0 top-0 w-4 h-4 bg-amber-400 rounded-full transform -translate-x-2.5 hover:scale-110 transition-transform duration-200"></div>
 
-                  {/* Award content */}
-                  <div className="relative bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
-                    {/* Background layer - Image or Gradient */}
-                    {getProjectImage(award.project) ? (
-                      <>
-                        {/* Light mode */}
-                        <div
-                          className="absolute inset-y-0 right-0 w-1/2 pointer-events-none opacity-30 dark:hidden"
-                          style={{
-                            backgroundImage: `linear-gradient(to left, transparent 0%, rgba(255,255,255,0.95) 100%), url('${getProjectImage(award.project)}')`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center'
-                          }}
-                        />
-                        {/* Dark mode */}
-                        <div
-                          className="absolute inset-y-0 right-0 w-1/2 pointer-events-none opacity-30 hidden dark:block"
-                          style={{
-                            backgroundImage: `linear-gradient(to left, transparent 0%, rgba(31,41,55,0.95) 100%), url('${getProjectImage(award.project)}')`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center'
-                          }}
-                        />
-                      </>
-                    ) : (
-                      <div className={`absolute inset-y-0 right-0 w-1/2 pointer-events-none ${
-                        award.award === "최우수"
+                    {/* Award content */}
+                    <div className="relative bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
+                      {/* Background layer - Image or Gradient */}
+                      {getProjectImage(award.project) ? (
+                        <>
+                          {/* Light mode */}
+                          <div
+                            className="absolute inset-y-0 right-0 w-1/2 pointer-events-none opacity-30 dark:hidden"
+                            style={{
+                              backgroundImage: `linear-gradient(to left, transparent 0%, rgba(255,255,255,0.95) 100%), url('${getProjectImage(award.project)}')`,
+                              backgroundSize: 'cover',
+                              backgroundPosition: 'center'
+                            }}
+                          />
+                          {/* Dark mode */}
+                          <div
+                            className="absolute inset-y-0 right-0 w-1/2 pointer-events-none opacity-30 hidden dark:block"
+                            style={{
+                              backgroundImage: `linear-gradient(to left, transparent 0%, rgba(31,41,55,0.95) 100%), url('${getProjectImage(award.project)}')`,
+                              backgroundSize: 'cover',
+                              backgroundPosition: 'center'
+                            }}
+                          />
+                        </>
+                      ) : (
+                        <div className={`absolute inset-y-0 right-0 w-1/2 pointer-events-none ${award.award === "최우수"
                           ? "bg-gradient-to-l from-amber-50/40 to-transparent dark:from-amber-900/10"
                           : award.award === "우수"
-                          ? "bg-gradient-to-l from-slate-50/40 to-transparent dark:from-slate-900/10"
-                          : "bg-gradient-to-l from-gray-50/40 to-transparent dark:from-gray-700/10"
-                      }`} />
-                    )}
+                            ? "bg-gradient-to-l from-slate-50/40 to-transparent dark:from-slate-900/10"
+                            : "bg-gradient-to-l from-gray-50/40 to-transparent dark:from-gray-700/10"
+                          }`} />
+                      )}
 
-                    {/* Content */}
-                    <div className="relative z-10">
-                      <div className="flex items-center gap-2 mb-3">
-                        <Badge 
-                          variant={
-                            award.award === "최우수" ? "amber"
-                            : award.award === "우수" ? "slate"
-                            : "gray"
-                          }
-                          size="sm"
-                          className="font-bold"
-                        >
-                          {award.award}
-                        </Badge>
-                        <Badge variant="gray" size="sm">
-                          {award.date}
-                        </Badge>
+                      {/* Content */}
+                      <div className="relative z-10">
+                        <div className="flex items-center gap-2 mb-3">
+                          <Badge
+                            variant={
+                              award.award === "최우수" ? "amber"
+                                : award.award === "우수" ? "slate"
+                                  : "gray"
+                            }
+                            size="sm"
+                            className="font-bold"
+                          >
+                            {award.award}
+                          </Badge>
+                          <Badge variant="gray" size="sm">
+                            {award.date}
+                          </Badge>
+                        </div>
+                        <h4 className="text-gray-900 dark:text-white">{renderProjectName(award.project)}</h4>
                       </div>
-                      <h4 className="text-gray-900 dark:text-white">{renderProjectName(award.project)}</h4>
+                      <p className="relative z-10 text-sm text-gray-600 dark:text-gray-400">{award.event}</p>
                     </div>
-                    <p className="relative z-10 text-sm text-gray-600 dark:text-gray-400">{award.event}</p>
                   </div>
-                </div>
                 )
               })}
             </div>

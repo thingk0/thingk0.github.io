@@ -41,7 +41,8 @@
           "Docker",
           "Milvus",
           "Tableau",
-          "AWS"
+          "AWS",
+          "Neo4j"
         ],
         "achievements": [
           "Text-to-VDS Query 에이전트를 통해 비기술 사용자의 데이터 접근성 향상",
