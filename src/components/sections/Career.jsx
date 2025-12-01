@@ -179,16 +179,27 @@ const Career = () => {
                   {job.positions?.[activePositions[jobIndex]]?.techStack?.length > 0 && (
                     <div className="mb-6">
                       <h5 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">기술 스택</h5>
-                      <div className="grid grid-cols-[repeat(3,max-content)] sm:grid-cols-[repeat(4,max-content)] md:grid-cols-[repeat(6,max-content)] gap-2 justify-items-start">
-                        {job.positions[activePositions[jobIndex]].techStack.map((tech, idx) => (
-                          <SkillBadge
-                            key={idx}
-                            name={tech}
-                            icon={getSkillIcon(tech)}
-                            size="sm"
-                            variant="gray"
-                          />
-                        ))}
+                      <div className="flex flex-col gap-2">
+                        {(() => {
+                          const techStack = job.positions[activePositions[jobIndex]].techStack;
+                          const chunks = [];
+                          for (let i = 0; i < techStack.length; i += 6) {
+                            chunks.push(techStack.slice(i, i + 6));
+                          }
+                          return chunks.map((chunk, chunkIndex) => (
+                            <div key={chunkIndex} className="flex flex-wrap gap-2">
+                              {chunk.map((tech, idx) => (
+                                <SkillBadge
+                                  key={`${chunkIndex}-${idx}`}
+                                  name={tech}
+                                  icon={getSkillIcon(tech)}
+                                  size="sm"
+                                  variant="gray"
+                                />
+                              ))}
+                            </div>
+                          ));
+                        })()}
                       </div>
                     </div>
                   )}

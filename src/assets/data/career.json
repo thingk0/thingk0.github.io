@@ -19,9 +19,10 @@
         "techStack": [
           "Java",
           "Spring",
+          "JPA(Hibernate)",
           "PostgreSQL",
-          "Tableau",
-          "AWS"
+          "AWS",
+          "Tableau"
         ]
       },
       {
@@ -38,11 +39,11 @@
           "FastAPI",
           "LangChain",
           "PostgreSQL",
-          "Docker",
           "Milvus",
-          "Tableau",
+          "Neo4j",
+          "Docker",
           "AWS",
-          "Neo4j"
+          "Tableau"
         ],
         "achievements": [
           "Text-to-VDS Query 에이전트를 통해 비기술 사용자의 데이터 접근성 향상",
