@@ -1,10 +1,12 @@
 [
   {
     "name": "토익스피킹 IM1",
-    "date": "2024.03.16"
+    "date": "2024.03.16",
+    "icon": "/assets/icons/certifications/toeic.svg"
   },
   {
     "name": "SQLD (SQL 개발자)",
-    "date": "2023.12.15"
+    "date": "2023.12.15",
+    "icon": "/assets/icons/certifications/sqld.svg"
   }
 ]

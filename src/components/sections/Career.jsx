@@ -400,6 +400,13 @@ const Career = () => {
                   key={index}
                   className="inline-flex items-center gap-2 px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full"
                 >
+                  {cert.icon && (
+                    <img
+                      src={cert.icon}
+                      alt=""
+                      className="w-4 h-4 object-contain opacity-60 dark:invert"
+                    />
+                  )}
                   <span className="font-semibold text-gray-900 dark:text-white">{cert.name}</span>
                   <span className="text-sm text-gray-600 dark:text-gray-400">• {cert.date}</span>
                 </div>
