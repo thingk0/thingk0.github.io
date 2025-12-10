@@ -28,10 +28,19 @@ const About = () => {
       }
     }
   }, [])
+
+  // 경력 동적 계산
+  const calculateExperience = () => {
+    const startDate = new Date(profileData.careerStartDate)
+    const now = new Date()
+    const years = Math.floor((now - startDate) / (365.25 * 24 * 60 * 60 * 1000))
+    return years < 1 ? '1Y+' : `${years}Y+`
+  }
+
   // 통계 데이터 계산
   const stats = [
     {
-      number: '1Y+',
+      number: calculateExperience(),
       label: '경력',
       icon: '💼'
     },
@@ -74,8 +83,8 @@ const About = () => {
             {/* Stats Section */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-gray-200 dark:border-gray-700">
               {stats.map((stat, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className={`text-center scroll-animate ${isVisible ? 'animate-fadeInUpStagger' : ''}`}
                   style={{ animationDelay: `${0.2 + index * 0.1}s` }}
                 >

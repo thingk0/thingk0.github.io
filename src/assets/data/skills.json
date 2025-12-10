@@ -6,22 +6,26 @@
         {
           "name": "Java",
           "level": 3.5,
-          "icon": "/assets/icons/languages/java.svg"
+          "icon": "/assets/icons/languages/java.svg",
+          "description": ""
         },
         {
           "name": "Kotlin",
           "level": 2.0,
-          "icon": "/assets/icons/languages/kotlin.svg"
+          "icon": "/assets/icons/languages/kotlin.svg",
+          "description": ""
         },
         {
           "name": "Python",
           "level": 3.0,
-          "icon": "/assets/icons/languages/python.svg"
+          "icon": "/assets/icons/languages/python.svg",
+          "description": ""
         },
         {
           "name": "JavaScript",
           "level": 2.0,
-          "icon": "/assets/icons/languages/javascript.svg"
+          "icon": "/assets/icons/languages/javascript.svg",
+          "description": ""
         }
       ]
     },
@@ -31,22 +35,26 @@
         {
           "name": "React",
           "level": 2.5,
-          "icon": "/assets/icons/frontend/react.svg"
+          "icon": "/assets/icons/frontend/react.svg",
+          "description": ""
         },
         {
           "name": "Tailwind CSS",
           "level": 2.0,
-          "icon": "/assets/icons/frontend/tailwindcss.svg"
+          "icon": "/assets/icons/frontend/tailwindcss.svg",
+          "description": ""
         },
         {
           "name": "HTML",
           "level": 2.5,
-          "icon": "/assets/icons/languages/html.svg"
+          "icon": "/assets/icons/languages/html.svg",
+          "description": ""
         },
         {
           "name": "CSS",
           "level": 2.5,
-          "icon": "/assets/icons/languages/css.svg"
+          "icon": "/assets/icons/languages/css.svg",
+          "description": ""
         }
       ]
     },
@@ -56,17 +64,20 @@
         {
           "name": "Spring",
           "level": 3.5,
-          "icon": "/assets/icons/frameworks/spring.svg"
+          "icon": "/assets/icons/frameworks/spring.svg",
+          "description": ""
         },
         {
           "name": "FastAPI",
           "level": 2.5,
-          "icon": "/assets/icons/frameworks/fastapi.svg"
+          "icon": "/assets/icons/frameworks/fastapi.svg",
+          "description": ""
         },
         {
           "name": "JPA(Hibernate)",
           "level": 3.0,
-          "icon": "/assets/icons/frameworks/hibernate.svg"
+          "icon": "/assets/icons/frameworks/hibernate.svg",
+          "description": ""
         }
       ]
     },
@@ -76,32 +87,38 @@
         {
           "name": "PostgreSQL",
           "level": 2.5,
-          "icon": "/assets/icons/databases/postgresql.svg"
+          "icon": "/assets/icons/databases/postgresql.svg",
+          "description": ""
         },
         {
           "name": "MySQL",
           "level": 2.5,
-          "icon": "/assets/icons/databases/mysql.svg"
+          "icon": "/assets/icons/databases/mysql.svg",
+          "description": ""
         },
         {
           "name": "Redis",
           "level": 2.0,
-          "icon": "/assets/icons/databases/redis.svg"
+          "icon": "/assets/icons/databases/redis.svg",
+          "description": ""
         },
         {
           "name": "Elasticsearch",
           "level": 2.0,
-          "icon": "/assets/icons/databases/elasticsearch.svg"
+          "icon": "/assets/icons/databases/elasticsearch.svg",
+          "description": ""
         },
         {
           "name": "Milvus",
           "level": 2.0,
-          "icon": "/assets/icons/databases/milvus.svg"
+          "icon": "/assets/icons/databases/milvus.svg",
+          "description": ""
         },
         {
           "name": "Neo4j",
           "level": 2.0,
-          "icon": "/assets/icons/databases/neo4j.svg"
+          "icon": "/assets/icons/databases/neo4j.svg",
+          "description": ""
         }
       ]
     },
@@ -111,27 +128,32 @@
         {
           "name": "Docker",
           "level": 2.5,
-          "icon": "/assets/icons/devops/docker.svg"
+          "icon": "/assets/icons/devops/docker.svg",
+          "description": ""
         },
         {
           "name": "AWS",
           "level": 2.0,
-          "icon": "/assets/icons/devops/aws.svg"
+          "icon": "/assets/icons/devops/aws.svg",
+          "description": ""
         },
         {
           "name": "Kafka",
           "level": 2.0,
-          "icon": "/assets/icons/devops/kafka.svg"
+          "icon": "/assets/icons/devops/kafka.svg",
+          "description": ""
         },
         {
           "name": "Nginx",
           "level": 2.5,
-          "icon": "/assets/icons/devops/nginx.svg"
+          "icon": "/assets/icons/devops/nginx.svg",
+          "description": ""
         },
         {
           "name": "Jenkins",
           "level": 1.5,
-          "icon": "/assets/icons/devops/jenkins.svg"
+          "icon": "/assets/icons/devops/jenkins.svg",
+          "description": ""
         }
       ]
     },
@@ -141,17 +163,20 @@
         {
           "name": "Git",
           "level": 3.5,
-          "icon": "/assets/icons/dev-tools/git.svg"
+          "icon": "/assets/icons/dev-tools/git.svg",
+          "description": ""
         },
         {
           "name": "IntelliJ IDEA",
           "level": 3.5,
-          "icon": "/assets/icons/dev-tools/intellij.svg"
+          "icon": "/assets/icons/dev-tools/intellij.svg",
+          "description": ""
         },
         {
           "name": "Tableau",
           "level": 2.5,
-          "icon": "/assets/icons/dev-tools/tableau.svg"
+          "icon": "/assets/icons/dev-tools/tableau.svg",
+          "description": ""
         }
       ]
     },
@@ -161,12 +186,14 @@
         {
           "name": "LangChain",
           "level": 3.0,
-          "icon": "/assets/icons/ai-ml/langchain.svg"
+          "icon": "/assets/icons/ai-ml/langchain.svg",
+          "description": ""
         },
         {
           "name": "OpenAI",
           "level": 2.5,
-          "icon": "/assets/icons/ai-ml/openai.svg"
+          "icon": "/assets/icons/ai-ml/openai.svg",
+          "description": ""
         }
       ]
     },
@@ -176,22 +203,26 @@
         {
           "name": "Jira",
           "level": 2.5,
-          "icon": "/assets/icons/collaboration/jira.svg"
+          "icon": "/assets/icons/collaboration/jira.svg",
+          "description": ""
         },
         {
           "name": "Confluence",
           "level": 2.5,
-          "icon": "/assets/icons/collaboration/confluence.svg"
+          "icon": "/assets/icons/collaboration/confluence.svg",
+          "description": ""
         },
         {
           "name": "Notion",
           "level": 3.0,
-          "icon": "/assets/icons/collaboration/notion.svg"
+          "icon": "/assets/icons/collaboration/notion.svg",
+          "description": ""
         },
         {
           "name": "Slack",
           "level": 2.0,
-          "icon": "/assets/icons/collaboration/slack.svg"
+          "icon": "/assets/icons/collaboration/slack.svg",
+          "description": ""
         }
       ]
     },
@@ -201,12 +232,14 @@
         {
           "name": "Figma",
           "level": 4.0,
-          "icon": "/assets/icons/design/figma.svg"
+          "icon": "/assets/icons/design/figma.svg",
+          "description": ""
         },
         {
           "name": "Adobe Premiere Pro",
           "level": 3.5,
-          "icon": "/assets/icons/design/premierpro.svg"
+          "icon": "/assets/icons/design/premierpro.svg",
+          "description": ""
         }
       ]
     }

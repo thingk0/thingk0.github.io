@@ -14,10 +14,10 @@ const Skills = () => {
       if (!container) return
 
       const { scrollLeft, scrollWidth, clientWidth } = container
-      
+
       // Show left gradient if scrolled right
       setShowLeftGradient(scrollLeft > 10)
-      
+
       // Show right gradient if not at the end
       setShowRightGradient(scrollLeft < scrollWidth - clientWidth - 10)
     }
@@ -52,7 +52,7 @@ const Skills = () => {
       <div className="flex gap-1">
         {Array.from({ length: totalDots }).map((_, index) => {
           const fillState = getDotFillState(index)
-          
+
           return (
             <div key={index} className="relative w-2 h-2">
               {fillState === 'full' && (
@@ -73,10 +73,10 @@ const Skills = () => {
     )
   }
 
-  // Skill card component
+  // Skill card component with tooltip
   const SkillCard = ({ skill }) => {
     return (
-      <div className="flex flex-col items-center gap-3 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 hover:-translate-y-1 cursor-pointer group">
+      <div className="relative group flex flex-col items-center gap-3 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 hover:-translate-y-1 cursor-pointer">
         {/* Icon */}
         <div className="w-16 h-16 flex items-center justify-center">
           <img
@@ -91,6 +91,15 @@ const Skills = () => {
 
         {/* Proficiency Dots */}
         <ProficiencyDots level={skill.level} />
+
+        {/* Tooltip - only show if description exists */}
+        {skill.description && (
+          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 dark:bg-gray-700 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-20 max-w-xs text-center">
+            {skill.description}
+            {/* Arrow */}
+            <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-gray-700"></div>
+          </div>
+        )}
       </div>
     )
   }
@@ -110,12 +119,12 @@ const Skills = () => {
           {showLeftGradient && (
             <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white dark:from-gray-900 to-transparent pointer-events-none z-10 transition-opacity duration-300"></div>
           )}
-          
+
           {/* Right gradient overlay */}
           {showRightGradient && (
             <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white dark:from-gray-900 to-transparent pointer-events-none z-10 transition-opacity duration-300"></div>
           )}
-          
+
           <div ref={scrollContainerRef} className="flex gap-2 overflow-x-auto scrollbar-hide">
             {skillsData.categories.map((category) => (
               <button
