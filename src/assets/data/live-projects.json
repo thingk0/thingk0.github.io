@@ -8,11 +8,12 @@
         "gradient": "from-indigo-500 to-blue-600",
         "image": "https://www.banban.today/banban_og.jpg",
         "tags": [
+            "FastAPI",
+            "LangChain",
+            "Supabase",
             "Next.js",
             "React",
-            "Community",
-            "Vote",
-            "Social"
+            "Vercel"
         ],
         "github": null,
         "demo": "https://www.banban.today/",
