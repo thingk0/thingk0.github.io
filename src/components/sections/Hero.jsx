@@ -9,22 +9,25 @@ const Hero = () => {
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="animate-fadeInUp">
-          {/* Greeting */}
-          <p className="text-gray-900 dark:text-white font-semibold text-xl sm:text-2xl md:text-3xl mb-4 text-center">{profileData.greeting}</p>
+          {/* Greeting and Title Container - centered block with left-aligned content */}
+          <div className="inline-flex flex-col items-start">
+            {/* Greeting */}
+            <p className="text-gray-900 dark:text-white font-semibold text-xl sm:text-2xl md:text-3xl mb-4">{profileData.greeting}</p>
 
-          {/* Main Title */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-4 text-center break-words leading-relaxed">
-            <span className="text-gray-900 dark:text-white">저는</span>{' '}
-            <span className="relative inline-block">
-              <span className="text-transparent select-none">
-                {profileData.name}
-              </span>
-              <span className="absolute top-0 left-0 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent animate-gradientFadeIn">
-                {profileData.name}
-              </span>
-            </span>{' '}
-            <span className="text-gray-900 dark:text-white">입니다</span>
-          </h1>
+            {/* Main Title */}
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-4 break-words leading-relaxed">
+              <span className="text-gray-900 dark:text-white">저는</span>{' '}
+              <span className="relative inline-block font-black">
+                <span className="text-transparent select-none">
+                  {profileData.name}
+                </span>
+                <span className="absolute top-0 left-0 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent animate-gradientFadeIn">
+                  {profileData.name}
+                </span>
+              </span>{' '}
+              <span className="text-gray-900 dark:text-white">입니다</span>
+            </h1>
+          </div>
 
           {/* Subtitle */}
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-12 sm:mb-16 md:mb-20 text-center break-words leading-relaxed">
