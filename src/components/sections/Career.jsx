@@ -89,137 +89,157 @@ const Career = () => {
         {/* Work Experience Section */}
         <div className="mb-16">
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">경력</h3>
-          <div className="space-y-8">
+          <div className="space-y-12">
             {careerData?.map((job, jobIndex) => (
               <div
                 key={jobIndex}
                 ref={setItemRef(jobIndex)}
-                className={`relative pl-8 border-l-2 border-blue-500 transition-all duration-700 ${visibleItems.has(jobIndex) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                className={`transition-all duration-700 ${visibleItems.has(jobIndex) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}
               >
-                {/* Timeline dot */}
-                <div className="absolute left-0 top-0 w-4 h-4 bg-blue-500 rounded-full transform -translate-x-2.5 hover:scale-110 transition-transform duration-200"></div>
+                <div className="relative">
+                  {/* Timeline Line connecting Company to Positions */}
+                  <div className="absolute left-8 top-16 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700"></div>
 
-                {/* Job content */}
-                <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300">
-                  {/* Company Info + Position Tabs */}
-                  <div className="flex flex-col lg:flex-row lg:items-center gap-4 mb-6 pb-6 border-b border-gray-200 dark:border-gray-700">
-                    {/* Company Info */}
-                    <div className="flex items-center gap-4 flex-shrink-0">
+                  {/* Company Header */}
+                  <div className="relative flex items-center gap-6 mb-10">
+                    <div className="relative z-10 w-16 h-16 bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm flex items-center justify-center p-2">
                       {job.logo && (
                         <img
                           src={job.logo}
                           alt={`${job.company} 로고`}
-                          className="h-16 w-auto object-contain flex-shrink-0"
+                          className="w-full h-full object-contain"
                         />
                       )}
-                      <div>
-                        <h4 className="text-xl font-bold text-gray-900 dark:text-white">{job.company}</h4>
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                          {job.department}
-                          {job.level && <span className="mx-2">|</span>}
-                          {job.level && <span className="font-semibold">{job.level}</span>}
-                        </p>
+                    </div>
+                    <div>
+                      <h4 className="text-2xl font-bold text-gray-900 dark:text-white">{job.company}</h4>
+                      <div className="flex items-center gap-3 mt-1 text-sm text-gray-600 dark:text-gray-400">
+                        <span>{job.department}</span>
+                        {job.level && (
+                          <>
+                            <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
+                            <span>{job.level}</span>
+                          </>
+                        )}
                         {job.totalPeriod && (
-                          <p className="text-xs text-blue-600 dark:text-blue-400 font-semibold mt-1">
-                            총 재직기간: {job.totalPeriod}
-                          </p>
+                          <>
+                            <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
+                            <span className="text-blue-600 dark:text-blue-400 font-semibold">
+                              총 {job.totalPeriod}
+                            </span>
+                          </>
                         )}
                       </div>
                     </div>
-
-                    {/* Separator */}
-                    <div className="hidden lg:block w-px h-12 bg-gray-300 dark:bg-gray-600 flex-shrink-0"></div>
-
-                    {/* Position Tabs */}
-                    <div className="flex gap-2 flex-wrap">
-                      {job.positions?.map((position, posIndex) => (
-                        <button
-                          key={posIndex}
-                          onClick={() => {
-                            const newActivePositions = [...activePositions]
-                            newActivePositions[jobIndex] = posIndex
-                            setActivePositions(newActivePositions)
-                          }}
-                          className={`px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 ${activePositions[jobIndex] === posIndex
-                            ? 'bg-blue-500 text-white shadow-md'
-                            : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
-                            }`}
-                        >
-                          <div className="text-left">
-                            <div className="font-semibold">{position.title}</div>
-                            <div className={`text-xs mt-0.5 ${activePositions[jobIndex] === posIndex
-                              ? 'text-blue-100'
-                              : 'text-gray-500 dark:text-gray-400'
-                              }`}>
-                              {position.period}
-                            </div>
-                          </div>
-                        </button>
-                      ))}
-                    </div>
                   </div>
 
-                  {/* Responsibilities */}
-                  {job.positions?.[activePositions[jobIndex]]?.responsibilities?.length > 0 && (
-                    <div className="mb-6">
-                      <h5 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">담당 업무</h5>
-                      <ul className="space-y-2">
-                        {job.positions[activePositions[jobIndex]].responsibilities.map((responsibility, idx) => (
-                          <li key={idx} className="flex gap-3 text-sm text-gray-600 dark:text-gray-400">
-                            <span className="flex-shrink-0">•</span>
-                            <span>{responsibility}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+                  {/* Positions List */}
+                  <div className="space-y-8 pl-[4.5rem]">
+                    {[...job.positions].reverse().map((position, posIndex) => {
+                      const isLatest = posIndex === 0
+                      return (
+                        <div key={posIndex} className="relative">
+                          {/* Horizontal Connector */}
+                          <div className="absolute -left-6 top-8 w-6 h-0.5 bg-gray-200 dark:bg-gray-700"></div>
 
-                  {/* Tech Stack */}
-                  {job.positions?.[activePositions[jobIndex]]?.techStack?.length > 0 && (
-                    <div className="mb-6">
-                      <h5 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">기술 스택</h5>
-                      <div className="flex flex-col gap-2">
-                        {(() => {
-                          const techStack = job.positions[activePositions[jobIndex]].techStack;
-                          const chunks = [];
-                          for (let i = 0; i < techStack.length; i += 6) {
-                            chunks.push(techStack.slice(i, i + 6));
-                          }
-                          return chunks.map((chunk, chunkIndex) => (
-                            <div key={chunkIndex} className="flex flex-wrap gap-2">
-                              {chunk.map((tech, idx) => (
-                                <SkillBadge
-                                  key={`${chunkIndex}-${idx}`}
-                                  name={tech}
-                                  icon={getSkillIcon(tech)}
-                                  size="sm"
-                                  variant="gray"
-                                />
-                              ))}
+                          {/* Timeline Node */}
+                          <div className={`absolute -left-[1.85rem] top-[1.65rem] w-3 h-3 rounded-full border-2 bg-white dark:bg-gray-900 ${isLatest
+                              ? 'border-blue-500 ring-4 ring-blue-50 dark:ring-blue-900/30'
+                              : 'border-gray-300 dark:border-gray-600'
+                            }`}></div>
+
+                          {/* Position Card */}
+                          <div className={`bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 border shadow-sm hover:shadow-md transition-all duration-300 ${isLatest
+                              ? 'border-blue-100 dark:border-blue-900/50 ring-1 ring-blue-50 dark:ring-blue-900/20'
+                              : 'border-gray-100 dark:border-gray-700'
+                            }`}>
+                            {/* Header */}
+                            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                              <div className="flex items-center gap-3">
+                                <h5 className={`text-xl font-bold ${isLatest ? 'text-blue-600 dark:text-blue-400' : 'text-gray-900 dark:text-white'}`}>
+                                  {position.title}
+                                </h5>
+                                {isLatest && (
+                                  <span className="px-2.5 py-0.5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-bold rounded-full">
+                                    CURRENT
+                                  </span>
+                                )}
+                              </div>
+                              <span className="text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-700/50 px-3 py-1 rounded-full w-fit">
+                                {position.period}
+                              </span>
                             </div>
-                          ));
-                        })()}
-                      </div>
-                    </div>
-                  )}
 
-                  {/* Achievements */}
-                  {job.positions?.[activePositions[jobIndex]]?.achievements?.length > 0 && (
-                    <div>
-                      <h5 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">주요 성과</h5>
-                      <div className="space-y-2">
-                        {job.positions[activePositions[jobIndex]].achievements.map((achievement, idx) => (
-                          <div
-                            key={idx}
-                            className="p-3 bg-blue-50 dark:bg-blue-900/20 border-l-3 border-blue-500 text-sm text-gray-700 dark:text-blue-300 rounded"
-                          >
-                            {achievement}
+                            {/* Content Grid */}
+                            <div className="space-y-6">
+                              {/* Responsibilities */}
+                              {position.responsibilities?.length > 0 && (
+                                <div>
+                                  <h6 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-3 flex items-center gap-2">
+                                    <span className="w-1 h-4 bg-blue-500 rounded-full"></span>
+                                    Work
+                                  </h6>
+                                  <ul className="grid gap-2">
+                                    {position.responsibilities.map((responsibility, idx) => (
+                                      <li key={idx} className="flex gap-3 text-[15px] text-gray-600 dark:text-gray-300 leading-relaxed group">
+                                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-blue-400 transition-colors flex-shrink-0"></span>
+                                        <span>{responsibility}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              )}
+
+                              {/* Tech Stack & Achievements Grid */}
+                              <div className="grid md:grid-cols-2 gap-6 pt-2">
+                                {/* Tech Stack */}
+                                {position.techStack?.length > 0 && (
+                                  <div>
+                                    <h6 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-3 flex items-center gap-2">
+                                      <span className="w-1 h-4 bg-indigo-500 rounded-full"></span>
+                                      Tech Stack
+                                    </h6>
+                                    <div className="flex flex-wrap gap-2">
+                                      {position.techStack.map((tech, idx) => (
+                                        <SkillBadge
+                                          key={idx}
+                                          name={tech}
+                                          icon={getSkillIcon(tech)}
+                                          size="sm"
+                                          variant="gray"
+                                        />
+                                      ))}
+                                    </div>
+                                  </div>
+                                )}
+
+                                {/* Achievements */}
+                                {position.achievements?.length > 0 && (
+                                  <div>
+                                    <h6 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-3 flex items-center gap-2">
+                                      <span className="w-1 h-4 bg-emerald-500 rounded-full"></span>
+                                      Impact
+                                    </h6>
+                                    <div className="space-y-2">
+                                      {position.achievements.map((achievement, idx) => (
+                                        <div
+                                          key={idx}
+                                          className="p-3 bg-emerald-50/50 dark:bg-emerald-900/10 border border-emerald-100 dark:border-emerald-900/30 text-sm text-gray-700 dark:text-gray-300 rounded-lg"
+                                        >
+                                          {achievement}
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            </div>
                           </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                        </div>
+                      )
+                    })}
+                  </div>
                 </div>
               </div>
             ))}
