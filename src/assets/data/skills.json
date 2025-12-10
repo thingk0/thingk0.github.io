@@ -194,6 +194,18 @@
           "level": 2.5,
           "icon": "/assets/icons/ai-ml/openai.svg",
           "description": ""
+        },
+        {
+          "name": "Claude Code",
+          "level": 2.5,
+          "icon": "/assets/icons/ai-ml/claude.svg",
+          "description": ""
+        },
+        {
+          "name": "Kiro",
+          "level": 2.5,
+          "icon": "/assets/icons/ai-ml/kiro.svg",
+          "description": ""
         }
       ]
     },
@@ -222,6 +234,12 @@
           "name": "Slack",
           "level": 2.0,
           "icon": "/assets/icons/collaboration/slack.svg",
+          "description": ""
+        },
+        {
+          "name": "Microsoft Teams",
+          "level": 2.0,
+          "icon": "/assets/icons/collaboration/microsoft-teams.svg",
           "description": ""
         }
       ]
