@@ -145,14 +145,14 @@ const Career = () => {
 
                           {/* Timeline Node */}
                           <div className={`absolute -left-[1.85rem] top-[1.65rem] w-3 h-3 rounded-full border-2 bg-white dark:bg-gray-900 ${isLatest
-                              ? 'border-blue-500 ring-4 ring-blue-50 dark:ring-blue-900/30'
-                              : 'border-gray-300 dark:border-gray-600'
+                            ? 'border-blue-500 ring-4 ring-blue-50 dark:ring-blue-900/30'
+                            : 'border-gray-300 dark:border-gray-600'
                             }`}></div>
 
                           {/* Position Card */}
                           <div className={`bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 border shadow-sm hover:shadow-md transition-all duration-300 ${isLatest
-                              ? 'border-blue-100 dark:border-blue-900/50 ring-1 ring-blue-50 dark:ring-blue-900/20'
-                              : 'border-gray-100 dark:border-gray-700'
+                            ? 'border-blue-100 dark:border-blue-900/50 ring-1 ring-blue-50 dark:ring-blue-900/20'
+                            : 'border-gray-100 dark:border-gray-700'
                             }`}>
                             {/* Header */}
                             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
@@ -250,79 +250,96 @@ const Career = () => {
         {educationData?.length > 0 && (
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">학력</h3>
-            <div className="space-y-8">
+            <div className="space-y-12">
               {educationData.map((edu, index) => {
                 const itemIndex = careerData.length + index
                 return (
                   <div
                     key={index}
                     ref={setItemRef(itemIndex)}
-                    className={`relative pl-8 border-l-2 border-indigo-500 transition-all duration-700 ${visibleItems.has(itemIndex) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                    className={`transition-all duration-700 ${visibleItems.has(itemIndex) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                       }`}
                   >
-                    {/* Timeline dot */}
-                    <div className="absolute left-0 top-0 w-4 h-4 bg-indigo-500 rounded-full transform -translate-x-2.5 hover:scale-110 transition-transform duration-200"></div>
+                    <div className="relative">
+                      {/* Timeline Line connecting Institution to details */}
+                      <div className="absolute left-8 top-16 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700"></div>
 
-                    {/* Education content */}
-                    <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300">
-                      <div>
-                        <div className="flex items-center gap-2 mb-3">
-                          <Badge variant="indigo" size="sm">
-                            {edu.type}
-                          </Badge>
-                          <Badge variant="gray" size="sm">
-                            {edu.period}
-                          </Badge>
-                        </div>
-                        <div className="flex items-center gap-4">
-                          {edu.logo && (
+                      {/* Institution Header */}
+                      <div className="relative flex items-center gap-6 mb-10">
+                        <div className="relative z-10 w-16 h-16 bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm flex items-center justify-center p-2">
+                          {edu.logo ? (
                             <img
                               src={edu.logo}
                               alt={`${edu.institution} 로고`}
-                              className="h-16 w-auto object-contain flex-shrink-0"
+                              className="w-full h-full object-contain"
                             />
+                          ) : (
+                            <span className="text-2xl">🎓</span>
                           )}
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <h4 className="text-lg font-bold text-gray-900 dark:text-white">{edu.institution}</h4>
-                              {edu.url && (
-                                <a
-                                  href={edu.url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="flex-shrink-0 text-gray-500 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors duration-200"
-                                  title="바로가기"
-                                >
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-5 w-5"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                    strokeWidth={2}
-                                  >
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                                    />
-                                  </svg>
-                                </a>
-                              )}
-                            </div>
+                        </div>
+                        <div>
+                          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                            <h4 className="text-2xl font-bold text-gray-900 dark:text-white">{edu.institution}</h4>
                             {edu.major && (
-                              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                                전공: {edu.major} {edu.duration && `(${edu.duration})`}
-                              </p>
+                              <>
+                                <span className="hidden sm:inline w-1 h-1 bg-gray-400 rounded-full"></span>
+                                <span className="text-lg text-gray-700 dark:text-gray-300 font-medium">
+                                  {edu.major}
+                                </span>
+                              </>
+                            )}
+                            {edu.url && (
+                              <a
+                                href={edu.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                              >
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                              </a>
+                            )}
+                          </div>
+                          <div className="flex items-center gap-3 mt-1.5 text-sm text-gray-600 dark:text-gray-400">
+                            <span className="font-medium text-indigo-600 dark:text-indigo-400">{edu.type}</span>
+                            <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
+                            <span>{edu.period}</span>
+                            {edu.duration && (
+                              <>
+                                <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
+                                <span>{edu.duration}</span>
+                              </>
                             )}
                           </div>
                         </div>
                       </div>
-                      {edu.description && (
-                        <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                          {edu.description}
-                        </p>
-                      )}
+
+                      {/* Education Details Card */}
+                      <div className="pl-[4.5rem]">
+                        <div className="relative">
+                          {/* Horizontal Connector */}
+                          <div className="absolute -left-6 top-8 w-6 h-0.5 bg-gray-200 dark:bg-gray-700"></div>
+
+                          {/* Timeline Node */}
+                          <div className="absolute -left-[1.85rem] top-[1.65rem] w-3 h-3 rounded-full border-2 border-indigo-500 bg-white dark:bg-gray-900 ring-4 ring-indigo-50 dark:ring-indigo-900/30"></div>
+
+                          {/* Card */}
+                          <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 border border-indigo-100 dark:border-indigo-900/50 shadow-sm hover:shadow-md transition-all duration-300">
+                            {edu.description && (
+                              <div className="space-y-4">
+                                <h6 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                                  <span className="w-1 h-4 bg-indigo-500 rounded-full"></span>
+                                  Description
+                                </h6>
+                                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                                  {edu.description}
+                                </p>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 )
@@ -335,19 +352,16 @@ const Career = () => {
         {awardsData?.length > 0 && (
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">수상</h3>
-            <div className="space-y-8">
+            <div className="space-y-6">
               {awardsData.map((award, index) => {
                 const itemIndex = careerData.length + educationData.length + index
                 return (
                   <div
                     key={index}
                     ref={setItemRef(itemIndex)}
-                    className={`relative pl-8 border-l-2 border-amber-400 transition-all duration-700 ${visibleItems.has(itemIndex) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                    className={`transition-all duration-700 ${visibleItems.has(itemIndex) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                       }`}
                   >
-                    {/* Timeline dot */}
-                    <div className="absolute left-0 top-0 w-4 h-4 bg-amber-400 rounded-full transform -translate-x-2.5 hover:scale-110 transition-transform duration-200"></div>
-
                     {/* Award content */}
                     <div className="relative bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
                       {/* Background layer - Image or Gradient */}
@@ -382,7 +396,7 @@ const Career = () => {
                       )}
 
                       {/* Content */}
-                      <div className="relative z-10">
+                      <div className="relative z-10 w-full sm:w-2/3">
                         <div className="flex items-center gap-2 mb-3">
                           <Badge
                             variant={
@@ -399,9 +413,13 @@ const Career = () => {
                             {award.date}
                           </Badge>
                         </div>
-                        <h4 className="text-gray-900 dark:text-white">{renderProjectName(award.project)}</h4>
+                        <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
+                          {renderProjectName(award.project)}
+                        </h4>
+                        <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                          {award.event}
+                        </p>
                       </div>
-                      <p className="relative z-10 text-sm text-gray-600 dark:text-gray-400">{award.event}</p>
                     </div>
                   </div>
                 )
