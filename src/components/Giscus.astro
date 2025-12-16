@@ -1,0 +1,50 @@
+---
+/**
+ * Giscus - GitHub Discussions 기반 댓글 시스템
+ * 
+ * 설정 방법:
+ * 1. https://giscus.app 에서 설정 생성
+ * 2. 아래 props를 실제 값으로 교체
+ */
+interface Props {
+  repo?: string;
+  repoId?: string;
+  category?: string;
+  categoryId?: string;
+}
+
+const {
+  repo = "thingk0/blog",  // TODO: 실제 레포로 변경
+  repoId = "",            // TODO: giscus.app에서 발급
+  category = "Comments",
+  categoryId = "",        // TODO: giscus.app에서 발급
+} = Astro.props;
+---
+
+<section class="giscus-wrapper">
+  <script
+    src="https://giscus.app/client.js"
+    data-repo={repo}
+    data-repo-id={repoId}
+    data-category={category}
+    data-category-id={categoryId}
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="preferred_color_scheme"
+    data-lang="ko"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async
+  ></script>
+</section>
+
+<style>
+  .giscus-wrapper {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--gray-light, #e5e5e5);
+  }
+</style>

@@ -1,0 +1,70 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import BaseHead from '../components/BaseHead.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <BaseHead title={title} description={description} />
+    <ViewTransitions />
+    <style>
+      :root {
+        --sidebar-width: 280px;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+      }
+
+      .layout {
+        display: flex;
+        min-height: 100vh;
+      }
+
+      .main-content {
+        margin-left: var(--sidebar-width);
+        flex: 1;
+        min-height: 100vh;
+        background: #fafafa;
+      }
+
+      .content-wrapper {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      @media (max-width: 1024px) {
+        .main-content {
+          margin-left: 0;
+        }
+
+        .layout {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <Sidebar />
+      <main class="main-content">
+        <div class="content-wrapper">
+          <slot />
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
